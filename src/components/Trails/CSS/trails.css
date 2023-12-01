@@ -1,0 +1,16 @@
+.mantine-1knjhw7{
+    background-color: transparent;
+}
+/* header height is set to zero */
+.mantine-kq5u63{
+    min-height: 0rem;
+}
+/* table height */
+.mantine-vl6xmj {
+    min-height: 0px;
+}
+/* table body height */
+.mantine-19emwef {
+    max-width: 100%;
+    max-height: clamp(350px, calc(100vh - 16px), 351px);
+}

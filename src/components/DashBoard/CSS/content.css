@@ -1,0 +1,12 @@
+.content_Dashboard{
+    margin-top: 3rem;
+    border: 3px;
+    margin-left: 3rem;
+}
+
+.inline-card{
+    display: inline-block;
+    margin-right: 0.5rem;
+    
+}
+

@@ -1,0 +1,16 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#companylogo{
+
+    scale: 0.18;
+    margin-left: -172%;
+    transform: translateY(-180%);
+
+}
+#container_login_title{
+    line-height: 0;
+    margin-top: 20px;
+}
