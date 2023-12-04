@@ -19,7 +19,6 @@ const MachinePage = () =>
     const [data, setData] = useState([])
     const [value, setValue] = useState(null);
     const [valuestate, setValueState] = useRecoilState(machineDropdownAtom);
-
     const [tabsdisplay, setTabsDisplay] = useState(false)
 
 

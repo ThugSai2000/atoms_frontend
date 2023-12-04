@@ -41,6 +41,7 @@ const ReportPage = () =>
     const [csvdata, setCsv] = useState([])
     const { toPDF, targetRef } = usePDF({ filename: 'page.pdf' });
     const convertedDates = []
+    const [displayBody, setDisplayBody] = useState(false)
     const allDates = date.map((date) =>
     {
         const newDate = new Date(date)
@@ -128,7 +129,7 @@ const ReportPage = () =>
         }).catch((error) =>
             console.log(error))
 
-
+        setDisplayBody(true)
         // return () => a()
 
     }
@@ -352,38 +353,40 @@ const ReportPage = () =>
             </Box>
 
             {/* Reports Table & Graph */}
-            <Box mt={16} >
-                <Flex justify={'space-between'} pr={'1rem'} >
-                    <Title size={18} color='var(--color-bold-text)' fw={500}>Machine Data</Title>
+            {displayBody &&
+                <Box mt={16} >
+                    <Flex justify={'space-between'} pr={'1rem'} >
+                        <Title size={18} color='var(--color-bold-text)' fw={500}>Machine Data</Title>
 
-                    <Group sx={{ gap: '2rem' }} position='right'>
-                        <SegmentControlComponent data={[{ label: 'Table', value: 'table' }, { label: 'Graph', value: 'graph' }]}
+                        <Group sx={{ gap: '2rem' }} position='right'>
+                            <SegmentControlComponent data={[{ label: 'Table', value: 'table' }, { label: 'Graph', value: 'graph' }]}
 
-                        />
-                        <BiSolidFilePdf color='var(--color-onclick)' transform='scale(2)' onClick={tableDisplay ? exportPdf : () => toPDF()} />
-                        <RiFileExcel2Fill color='var(--color-onclick)' transform='scale(2)' onClick={exporttocsv} />
-                    </Group>
+                            />
+                            <BiSolidFilePdf color='var(--color-onclick)' transform='scale(2)' onClick={tableDisplay ? exportPdf : () => toPDF()} />
+                            <RiFileExcel2Fill color='var(--color-onclick)' transform='scale(2)' onClick={exporttocsv} />
+                        </Group>
 
-                </Flex>
-                <Paper mt={17} shadow='xs' >
+                    </Flex>
+                    <Paper mt={17} shadow='xs' >
 
-                    {
-                        tableDisplay &&
-                        <div ref={targetRef}>
-                            <TableComponent row={row} id='reports-table' />
-                        </div>
-                    }
+                        {
+                            tableDisplay &&
+                            <div ref={targetRef}>
+                                <TableComponent row={row} id='reports-table' />
+                            </div>
+                        }
 
-                    {
-                        graphDisplay &&
-                        <div ref={targetRef}>
-                            <BarChart low={low} high={high} time={time} />
-                        </div>
+                        {
+                            graphDisplay &&
+                            <div ref={targetRef}>
+                                <BarChart low={low} high={high} time={time} />
+                            </div>
 
-                    }
+                        }
 
-                </Paper>
-            </Box>
+                    </Paper>
+                </Box>
+            }
             {/* </ScrollArea> */}
         </Container>
     )

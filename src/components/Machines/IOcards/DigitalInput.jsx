@@ -1,4 +1,4 @@
-import { Box, Card, Flex, Text } from '@mantine/core';
+import { Box, Card, Flex, SimpleGrid, Space, Text } from '@mantine/core';
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import client, { digitaloutputglobal, machineDropdownAtom, globalapi, timestampglobal, } from '../../../API/API';
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -16,7 +16,7 @@ const CardsDigitalInput = ({ data }) =>
             </Box>
 
             <Box w={'25%'} h={'100%'} shadow="sm" radius={'6px'} bg={data.color}>
-                <Text size={'1rem'} mt={14} weight={400} color='var(--color-white)'  >{data.value}</Text>
+                <Text size={'1rem'} mt={14} weight={400} color='var(--color-white)' align='center' >{data.value}</Text>
             </Box>
         </Card>
 
@@ -111,39 +111,23 @@ const DigitalInput = () =>
 
     }, [dpvalue, setAnalogInput, setAnalogOutput, setChangedDpvalue, setDbtimestamp, setDigitaloutput, setGlobalresState, setParams]);
 
-    const flexRef = useRef(null);
-
-    const flexWidth = flexRef.current?.offsetWidth;
-
-
-    const gap = useMemo(() =>
-    {
-        if (flexWidth === 1363)
-        {
-            return 16;
-        }
-        else
-        {
-            return '3rem'
-        }
-
-    }, [flexWidth]);
-
 
     return (
-        <div style={{ height: '100%', width: 'auto', backgroundColor: 'var(--color-white)', borderRadius: '0.5rem', textAlign: 'center', display: 'flex', justifyContent: 'center' }} >
+        <div style={{ height: '100%', width: 'auto', backgroundColor: 'var(--color-white)', borderRadius: '0.5rem' }} >
 
-            <Flex className='flex-container' ref={flexRef} justify="flex-start" columnGap={gap} rowGap={'1rem'} wrap="wrap" h={'100%'} pt={'1rem'} pl={'2.5rem'} pr={0} pb={'1rem'}  >
+            <SimpleGrid cols={5} h={'100%'} p={'1rem'} >
 
 
                 {
                     cdata.map((card) => (
+
                         <CardsDigitalInput key={card.name} data={card} />
+
                     ))
 
                 }
 
-            </Flex>
+            </SimpleGrid>
 
         </div>
     )

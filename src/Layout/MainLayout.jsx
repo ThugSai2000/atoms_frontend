@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import NavBarTopComponent from '../components/NavBar/NavBarTopComponent'
 import './Css/pages.css'
 import { ActionIcon, Box, } from '@mantine/core'
@@ -8,18 +8,23 @@ import { GiGears, GiHamburgerMenu } from 'react-icons/gi';
 import { BiSolidDashboard, BiSolidReport } from 'react-icons/bi';
 import { IoMdNotifications } from 'react-icons/io';
 import { AiFillSetting } from 'react-icons/ai';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 
 
 const MainLayout
     = () =>
     {
+        const navigate = useNavigate()
         let [open, setOpen] = useState(false);
         const [showText, setShowText] = useState(false);
         const [largeNavbar, setLargeNavbar] = useState(false);
-        const [active, setActive] = useState('Dashboard');
+        const [active, setActive] = useState(null);
         const [activeComponent, setActiveComponent] = useState('');
+        const [linkItem, setLinkItem] = useState(null)
+
+        const location = useLocation()
+        // console.log("act " + location.pathname)
 
         const handleClose = () =>
         {
@@ -46,11 +51,21 @@ const MainLayout
             { link: '/reports', icon: <BiSolidReport size={showText ? '1.5rem' : '1.5rem'} />, label: 'Reports' },
             { link: '/settings', icon: <AiFillSetting size={showText ? '1.5rem' : '1.5rem'} />, label: 'Settings' },
         ];
+
         const handleLinkClick = (item) =>
         {
-            console.log(`Link clicked: ${item.label}`);
-            setActive(item.components);
+
+            setActive(item.link);
         };
+        // useEffect(() =>
+        // {
+        //     if (active === location.pathname)
+        //     {
+        //         iconRef.current.style.color = "red";
+        //         console.log("current : " + iconRef.current.sidebarItems)
+        //     }
+        // }, [active, location.pathname])
+
 
         return (
 
@@ -64,6 +79,7 @@ const MainLayout
 
                     {sidebarItems.map((item, index) => (
                         <Link
+
                             to={item.link}
                             key={item.label}
                             onClick={() => handleLinkClick(item)}
@@ -71,7 +87,7 @@ const MainLayout
                         >
                             <div className="sidebar-item" key={index} >
 
-                                <div className='sidebar-icon'>
+                                <div className='sidebar-icon' data-active >
 
                                     {item.icon}
                                 </div>
@@ -83,6 +99,7 @@ const MainLayout
 
                             </div>
                         </Link>
+
                     ))}
 
                 </div>

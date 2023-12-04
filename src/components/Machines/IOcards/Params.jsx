@@ -1,4 +1,4 @@
-import { Card, Flex, Group, Text } from '@mantine/core'
+import { Card, Flex, Group, SimpleGrid, Text } from '@mantine/core'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { paramsAtomglobal } from '../../../Store/store'
@@ -26,11 +26,10 @@ const CardsParams = ({ data }) =>
 }
 const Params = () =>
 {
-    const flexRef = useRef(null);
+
     const [cdata, setCData] = useState([])
     const dpvalue = useRecoilValue(machineDropdownAtom);
     const paramsAtomglobalValue = useRecoilValue(paramsAtomglobal)
-    const flexWidth = flexRef.current?.offsetWidth;
 
     useEffect(() =>
     {
@@ -40,23 +39,11 @@ const Params = () =>
         }
     }, [dpvalue, paramsAtomglobalValue])
 
-    const gap = useMemo(() =>
-    {
-        if (flexWidth === 1363)
-        {
-            return 16;
-        }
-        else
-        {
-            return '3rem'
-        }
-
-    }, [flexWidth]);
 
     return (
         <div style={{ height: '100%', width: 'auto', backgroundColor: 'var(--color-white)', borderRadius: '0.5rem', }} >
 
-            <Flex id='flex' ref={flexRef} justify="flex-start" gap={gap} wrap="wrap" h={'100%'} pt={'2rem'} pl={'2.5rem'} pr={0} pb={'1rem'} >
+            <SimpleGrid cols={5} h={'100%'} p={'1rem'} >
 
                 {
                     cdata.map((card) => (
@@ -64,7 +51,7 @@ const Params = () =>
                     ))
                 }
 
-            </Flex>
+            </SimpleGrid>
 
         </div>
     )

@@ -19,6 +19,9 @@ text-align: left;
  width: 100%;
  padding-left: 0.5rem;
 }
+/* .sidebar-icon[data-active]{
+    color: var(--color-onclick);
+} */
 /* .sidebar-text:hover{
     background-color: darkgray;
     border-radius: 0 0.5rem 0.5rem 0;
