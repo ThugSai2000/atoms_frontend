@@ -36,7 +36,9 @@ const MachinePage = () =>
                 value: machine.machine_id,
             }));
             setData(filteredData);
-        });
+        }).catch((error) => (
+            console.log("error", error)
+        ));
 
     }, []);
 

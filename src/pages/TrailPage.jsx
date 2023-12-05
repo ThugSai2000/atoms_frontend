@@ -168,6 +168,7 @@ const TrailPage = () =>
                         <DatesProvider>
                             <DatePickerInput w={240}
                                 // defaultDate={new Date()}
+                                icon={<BiCalendarAlt size='1.3rem' color='var(--color-icon)' />}
                                 value={dateValue}
                                 styles={{
                                     calendar: {
@@ -181,7 +182,7 @@ const TrailPage = () =>
                                 valueFormat="YYYY-MM-DD"
                                 label='Date'
                                 highlightToday={true}
-                                rightSection={<BiCalendarAlt size='1.3rem' color='var(--color-icon)' />}
+                            // rightSection={<BiCalendarAlt size='1.3rem' color='var(--color-icon)' />}
 
                             />
                         </DatesProvider>

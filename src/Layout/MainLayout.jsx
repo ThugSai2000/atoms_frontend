@@ -79,21 +79,16 @@ const MainLayout
 
                     {sidebarItems.map((item, index) => (
                         <Link
-
                             to={item.link}
                             key={item.label}
                             onClick={() => handleLinkClick(item)}
                             style={{ textDecoration: 'none', color: 'var(--color-text)' }}
                         >
                             <div className="sidebar-item" key={index} >
-
                                 <div className='sidebar-icon' data-active >
-
                                     {item.icon}
                                 </div>
-
                                 {showText && <div className="sidebar-text" >
-
                                     <span>{item.label}</span>
                                 </div>}
 

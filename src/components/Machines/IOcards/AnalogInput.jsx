@@ -4,6 +4,7 @@ import { machineDropdownAtom } from '../../../API/API';
 
 import { useRecoilValue } from 'recoil';
 import { analogInputAtom } from '../../../Store/store';
+import NoDataAvailable from '../../noDataAvailable/NoDataAvailable';
 
 const CardsAnalogInput = ({ data }) =>
 {
@@ -39,9 +40,9 @@ const AnalogInput = () =>
 
             <SimpleGrid cols={5} h={'100%'} p={'1rem'} >
                 {
-                    cdata.map((card) => (
+                    cdata ? cdata.map((card) => (
                         <CardsAnalogInput key={card.id} data={card} />
-                    ))
+                    )) : <NoDataAvailable />
                 }
 
             </SimpleGrid>

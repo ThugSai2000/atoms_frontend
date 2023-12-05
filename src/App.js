@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { MantineProvider } from '@mantine/core';
+import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import {
     RecoilRoot,
   } from 'recoil';
@@ -18,9 +18,12 @@ function App() {
 
   let token = true
    
+  const [colorScheme, setColorScheme] = useState('light')
+  const toggleColorScheme = (value) => setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
   
   return (
-   <MantineProvider>
+    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+   <MantineProvider theme={{colorScheme}} withGlobalStyles withNormalizeCSS>
     <RecoilRoot>
     <Router>
             <Routes>
@@ -43,7 +46,7 @@ function App() {
         </Router>
      </RecoilRoot>
         </MantineProvider>
-   
+        </ColorSchemeProvider>
       
   );
 }

@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { paramsAtomglobal } from '../../../Store/store'
 import { machineDropdownAtom } from '../../../API/API'
+import NoDataAvailable from '../../noDataAvailable/NoDataAvailable'
 const CardsParams = ({ data }) =>
 {
 
@@ -46,9 +47,9 @@ const Params = () =>
             <SimpleGrid cols={5} h={'100%'} p={'1rem'} >
 
                 {
-                    cdata.map((card) => (
+                    cdata.length > 0 ? cdata.map((card) => (
                         <CardsParams key={card.name} data={card} />
-                    ))
+                    )) : <NoDataAvailable />
                 }
 
             </SimpleGrid>

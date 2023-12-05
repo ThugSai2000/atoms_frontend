@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import client, { digitaloutputglobal, machineDropdownAtom, globalapi, timestampglobal, } from '../../../API/API';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { analogInputAtom, analogOutputAtom, paramsAtomglobal } from '../../../Store/store';
+import NoDataAvailable from '../../noDataAvailable/NoDataAvailable';
 
 
 const CardsDigitalInput = ({ data }) =>
@@ -119,11 +120,11 @@ const DigitalInput = () =>
 
 
                 {
-                    cdata.map((card) => (
+                    cdata.length > 0 ? cdata.map((card) => (
 
                         <CardsDigitalInput key={card.name} data={card} />
 
-                    ))
+                    )) : <NoDataAvailable />
 
                 }
 

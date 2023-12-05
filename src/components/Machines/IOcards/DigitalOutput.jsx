@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { digitaloutputglobal, machineDropdownAtom, } from '../../../API/API';
 
 import { useRecoilValue } from 'recoil';
+import NoDataAvailable from '../../noDataAvailable/NoDataAvailable';
 
 
 const CardsDigitalOutput = ({ data }) =>
@@ -51,9 +52,9 @@ const DigitalOutput = () =>
             <SimpleGrid cols={5} h={'100%'} p={'1rem'} >
 
                 {
-                    cdata.map((card) => (
+                    cdata.length > 0 ? cdata.map((card) => (
                         <CardsDigitalOutput key={card.name} data={card} />
-                    ))
+                    )) : <NoDataAvailable />
                 }
 
             </SimpleGrid>

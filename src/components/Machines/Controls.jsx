@@ -3,6 +3,7 @@ import { Box, Card, Container, Flex, Switch, Text, Title } from '@mantine/core'
 
 import client, { machineDropdownAtom, ldm, } from '../../API/API';
 import { useRecoilValue } from 'recoil';
+import NoDataAvailable from '../noDataAvailable/NoDataAvailable';
 
 
 const ControlCard = ({ data }) =>
@@ -121,9 +122,10 @@ const Controls = () =>
             <Title fw={500} fz={16} p={'1rem'} ml={'0rem'} color='var(--color-onclick)'>Last updated at: {controltime}</Title>
             <Container fluid bg='var(--color-white)' p={16}>
                 <Flex className='flex-container' justify="flex-start" columnGap={20} rowGap={'1rem'} wrap="wrap" h={'100%'} pt={'1rem'} pl={'2.5rem'} pr={0} pb={'1rem'}  >
-                    {cdata.map((card) => (
+                    {cdata.length > 0 ? cdata.map((card) => (
                         <ControlCard key={card.name} data={card} />
-                    ))}
+                    )) : <NoDataAvailable />
+                    }
 
 
                 </Flex>

@@ -39,7 +39,7 @@ const ReportPage = () =>
     const [reportSelectedOption, setReportSelectedOption] = useState(null)
     const [date, setDate] = useState([])
     const [csvdata, setCsv] = useState([])
-    const { toPDF, targetRef } = usePDF({ filename: 'page.pdf' });
+    const { toPDF, targetRef } = usePDF({ filename: 'Trailgraph.pdf' });
     const convertedDates = []
     const [displayBody, setDisplayBody] = useState(false)
     const allDates = date.map((date) =>

@@ -1,8 +1,9 @@
-import { Card, Grid, Text } from '@mantine/core'
+import { Card, Grid, SimpleGrid, Text } from '@mantine/core'
 import React, { useEffect, useState } from 'react'
 import TableTechnicalDetails from './Technical_Details'
 import client, { machineDropdownAtom } from '../../API/API'
 import { useRecoilValue } from 'recoil'
+import ManualDocs from './ManualsDocs'
 
 
 const MachineTabs = () =>
@@ -120,7 +121,9 @@ const MachineTabs = () =>
                     <Text style={{ marginBottom: '0.5rem' }} className='subcardHeading'>
                         Manuals & Docs
                     </Text>
+                    {/* <SimpleGrid cols={4}>
 
+</SimpleGrid> */}
                     {/* <ManualDocs /> */}
 
                 </Card></Grid.Col>
