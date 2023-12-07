@@ -1,9 +1,11 @@
-import { Card, Grid, SimpleGrid, Text } from '@mantine/core'
+import { Box, Card, Grid, SimpleGrid, Text } from '@mantine/core'
 import React, { useEffect, useState } from 'react'
 import TableTechnicalDetails from './Technical_Details'
 import client, { machineDropdownAtom } from '../../API/API'
 import { useRecoilValue } from 'recoil'
 import ManualDocs from './ManualsDocs'
+import SimpleGridComponent from '../simplegrid/SimpleGridComponent'
+import { BiDownload, BiSolidFileDoc } from 'react-icons/bi'
 
 
 const MachineTabs = () =>
@@ -121,9 +123,28 @@ const MachineTabs = () =>
                     <Text style={{ marginBottom: '0.5rem' }} className='subcardHeading'>
                         Manuals & Docs
                     </Text>
-                    {/* <SimpleGrid cols={4}>
+                    <SimpleGrid cols={4}>
+                        <Box mt={23} ml={24} style={{ display: 'flex', flexDirection: 'column' }}>
 
-</SimpleGrid> */}
+                            <BiSolidFileDoc size={32} />
+                        </Box>
+
+                        <Box mt={16} style={{ display: 'flex', flexDirection: 'column' }}>
+
+                            <Text size={14} w={500}>Electrical Drawing</Text>
+                            <label style={{ fontSize: '12px' }} >Name</label>
+                        </Box>
+                        <Box style={{ display: 'flex', flexDirection: 'column' }}>
+
+                            <Text>Created</Text>
+                            <label >2-3-3000</label>
+                        </Box>
+                        <Box style={{ textAlign: 'center', fontSize: '2rem' }}>
+
+                            <BiDownload />
+
+                        </Box>
+                    </SimpleGrid>
                     {/* <ManualDocs /> */}
 
                 </Card></Grid.Col>

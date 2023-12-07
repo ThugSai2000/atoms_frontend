@@ -28,9 +28,9 @@ const IOStatusMachines = () =>
     <>
       <Title fw={500} fz={16} p={'1rem'} ml={'0rem'} color='var(--color-onclick)'>Last updated at: {dbtimestamp}</Title>
 
-      <Accordion value={value} onChange={setValue} variant="filled">
+      <Accordion value={value} onChange={setValue} variant="contained" bg={'var(--color-white)'}>
         <Accordion.Item value="item-1">
-          <Accordion.Control> <Title fw={500} fz={16} pt={'1rem'} ml={'0rem'} color='var(--color-bold-text)'>Digital Input</Title></Accordion.Control>
+          <Accordion.Control> <Title fw={500} fz={16} p={'0.5rem'} ml={'0rem'} color='var(--color-bold-text)'>Digital Input</Title></Accordion.Control>
 
           <Accordion.Panel><DigitalInput /></Accordion.Panel>
 
@@ -38,22 +38,22 @@ const IOStatusMachines = () =>
         </Accordion.Item>
 
         <Accordion.Item value="item-2">
-          <Accordion.Control><Title fw={500} fz={16} pt={'1rem'} ml={'0rem'} color='var(--color-bold-text)'>Digital Output </Title></Accordion.Control>
+          <Accordion.Control><Title fw={500} fz={16} p={'0.5rem'} ml={'0rem'} color='var(--color-bold-text)'>Digital Output </Title></Accordion.Control>
           <Accordion.Panel><DigitalOutput /></Accordion.Panel>
         </Accordion.Item>
 
         <Accordion.Item value="item-3">
-          <Accordion.Control><Title fw={500} fz={16} pt={'1rem'} ml={'0rem'} color='var(--color-bold-text)'>Analog Input</Title></Accordion.Control>
+          <Accordion.Control><Title fw={500} fz={16} p={'0.5rem'} ml={'0rem'} color='var(--color-bold-text)'>Analog Input</Title></Accordion.Control>
           <Accordion.Panel><AnalogInput /></Accordion.Panel>
         </Accordion.Item>
 
         <Accordion.Item value="item-4">
-          <Accordion.Control> <Title fw={500} fz={16} pt={'1rem'} ml={'0rem'} color='var(--color-bold-text)'>Analog Ouput</Title></Accordion.Control>
+          <Accordion.Control> <Title fw={500} fz={16} p={'0.5rem'} ml={'0rem'} color='var(--color-bold-text)'>Analog Ouput</Title></Accordion.Control>
           <Accordion.Panel><AnalogOutput /></Accordion.Panel>
         </Accordion.Item>
 
         <Accordion.Item value="item-5">
-          <Accordion.Control> <Title fw={500} fz={16} pt={'1rem'} ml={'0rem'} color='var(--color-bold-text)'>Params</Title></Accordion.Control>
+          <Accordion.Control> <Title fw={500} fz={16} p={'0.5rem'} ml={'0rem'} color='var(--color-bold-text)'>Params</Title></Accordion.Control>
           <Accordion.Panel><Params /></Accordion.Panel>
         </Accordion.Item>
       </Accordion>

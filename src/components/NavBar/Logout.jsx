@@ -32,10 +32,10 @@ const Logout = () =>
         // <Container >
         <Menu withArrow arrowPosition='center' position='bottom-end'>
             <Menu.Target>
-                <Avatar color="var(--color-icon)" radius="xl" >{userValue.charAt(0).toLocaleUpperCase()}</Avatar>
+                <Avatar color="var(--color-icon)" radius="xl" >{window.localStorage.getItem('username').charAt(0).toLocaleUpperCase()}</Avatar>
             </Menu.Target>
             <Menu.Dropdown sx={{ marginTop: '1.2rem' }}>
-                <Menu.Item sx={{ fontSize: '16px' }} fw={500} color='var(--color-bold-text)'>{userValue.charAt(0).toLocaleUpperCase() + userValue.slice(1)}</Menu.Item>
+                <Menu.Item sx={{ fontSize: '16px' }} fw={500} color='var(--color-bold-text)'>{window.localStorage.getItem('username').charAt(0).toLocaleUpperCase() + window.localStorage.getItem('username').slice(1)}</Menu.Item>
                 <Menu.Label>Role</Menu.Label>
                 <Menu.Divider />
                 <Menu.Item sx={{ fontSize: '16px' }} fw={500} color='var(--color-text)'><Link to={'/settings'} style={{ textDecoration: 'none', color: 'var(--color-text)' }}>Account Settings</Link> </Menu.Item>

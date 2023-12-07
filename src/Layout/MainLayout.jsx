@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import NavBarTopComponent from '../components/NavBar/NavBarTopComponent'
 import './Css/pages.css'
-import { ActionIcon, Box, } from '@mantine/core'
+import { ActionIcon, Box, Tooltip, } from '@mantine/core'
 import { AppShell, Header } from '@mantine/core';
 
 import { GiGears, GiHamburgerMenu } from 'react-icons/gi';
@@ -78,22 +78,32 @@ const MainLayout
                 }}>
 
                     {sidebarItems.map((item, index) => (
+
                         <Link
                             to={item.link}
                             key={item.label}
                             onClick={() => handleLinkClick(item)}
                             style={{ textDecoration: 'none', color: 'var(--color-text)' }}
                         >
+
                             <div className="sidebar-item" key={index} >
-                                <div className='sidebar-icon' data-active >
-                                    {item.icon}
-                                </div>
+                                <Tooltip label={item.label}
+                                    color="grey"
+                                    position="right-start"
+                                    withArrow
+                                >
+                                    <div className='sidebar-icon' >
+                                        {item.icon}
+                                    </div>
+                                </Tooltip>
+
                                 {showText && <div className="sidebar-text" >
                                     <span>{item.label}</span>
                                 </div>}
 
                             </div>
                         </Link>
+
 
                     ))}
 

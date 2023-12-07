@@ -28,20 +28,16 @@ function App() {
     <Router>
             <Routes>
               <Route exact path='/' element={<LoginForm/>}>
-              <Route exact path='/login' />
+                <Route exact path='/login' />
               </Route>
                 
-             
-                <Route element={<PrivateRoutes/>}>
-                    <Route exact path='/dashboard' element={token ? <DashBoardPage /> : <LoginForm/>} />
-                    <Route exact path='/machinelist' element={token ? <MachinePage /> : <LoginForm/>}/>
-                    <Route exact path='/trails' element={token ?  <TrailPage /> : <LoginForm/>} />
-                    <Route exact path='/reports' element={token ? <ReportPage />: <LoginForm/>} />
-                    <Route exact path='/settings' element={token ? <SettingsPage />: <LoginForm/>} />
-                 </Route>
-                   
-                
-               
+              <Route element={<PrivateRoutes/>}>
+                  <Route exact path='/dashboard' element={token ? <DashBoardPage /> : <LoginForm/>} />
+                  <Route exact path='/machinelist' element={token ? <MachinePage /> : <LoginForm/>}/> 
+                  <Route exact path='/trails' element={token ?  <TrailPage /> : <LoginForm/>} />
+                  <Route exact path='/reports' element={token ? <ReportPage />: <LoginForm/>} />
+                  <Route exact path='/settings' element={token ? <SettingsPage />: <LoginForm/>} />
+                </Route>     
             </Routes>
         </Router>
      </RecoilRoot>

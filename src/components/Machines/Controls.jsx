@@ -121,6 +121,7 @@ const Controls = () =>
         <div>
             <Title fw={500} fz={16} p={'1rem'} ml={'0rem'} color='var(--color-onclick)'>Last updated at: {controltime}</Title>
             <Container fluid bg='var(--color-white)' p={16}>
+                <Title fw={500} fz={16} p={'0.5rem'} ml={'0rem'} color='var(--color-bold-text)'>Digital Output </Title>
                 <Flex className='flex-container' justify="flex-start" columnGap={20} rowGap={'1rem'} wrap="wrap" h={'100%'} pt={'1rem'} pl={'2.5rem'} pr={0} pb={'1rem'}  >
                     {cdata.length > 0 ? cdata.map((card) => (
                         <ControlCard key={card.name} data={card} />

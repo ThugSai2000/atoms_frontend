@@ -54,6 +54,7 @@ const LoginForm = () =>
                 if (response.data.status === 'user_validated')
                 {
                     window.localStorage.setItem("Authorization", response.data.generated_token)
+                    window.localStorage.setItem("username", response.data.username)
                     navigate('/dashboard')
 
                     setUser(response.data.username)
