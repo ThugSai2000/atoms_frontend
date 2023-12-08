@@ -31,7 +31,7 @@ const MachineKpi = () =>
 
 
             const b = JSON.parse(event.data)
-            console.log(b.data)
+            // console.log(b.data)
             setReceivedData(b.data);
 
 

@@ -25,7 +25,7 @@ function App() {
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
    <MantineProvider theme={{colorScheme}} withGlobalStyles withNormalizeCSS>
     <RecoilRoot>
-    <Router>
+    <Router >
             <Routes>
               <Route exact path='/' element={<LoginForm/>}>
                 <Route exact path='/login' />

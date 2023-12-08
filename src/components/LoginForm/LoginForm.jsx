@@ -27,6 +27,7 @@ const LoginForm = () =>
     const [currentUser, setCurrentUser] = useState(false);
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [loader, setLoader] = useState(null)
     const [error, setError] = useState('');
     const [user, setUser] = useRecoilState(userAtom)
 
@@ -43,6 +44,7 @@ const LoginForm = () =>
 
     function handleLogin(e)
     {
+        setLoader(true)
         e.preventDefault();
 
         client.post('/login/', {
@@ -127,7 +129,7 @@ const LoginForm = () =>
                                         Forgot password?
                                     </Anchor>
                                 </Group> */}
-                                <Button fullWidth mt="xl" mb={20} type='submit'>
+                                <Button fullWidth mt="xl" mb={20} type='submit' loading={loader}>
                                     Login
                                 </Button>
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Card, Container, Grid, ScrollArea, Tabs, Text, } from '@mantine/core'
+import { Button, Card, Container, Grid, Loader, ScrollArea, Tabs, Text, } from '@mantine/core'
 import '../components/Machines/CSS/machinesDetails.css'
 import MachineKpi from '../components/Machines/MachineKpi'
 import IOStatusMachines from '../components/Machines/IOStatusMachines'
@@ -9,6 +9,7 @@ import MachineTabs from '../components/Machines/MachineTabs'
 import { useRecoilState, } from 'recoil';
 import { machineDropdownAtom } from '../API/API.js';
 import SelectDropdown from '../components/selectDropdown/SelectDropdown.jsx'
+import ButtonComponent from '../components/button/ButtonComponent.jsx'
 
 
 
@@ -18,6 +19,7 @@ const MachinePage = () =>
 
     const [data, setData] = useState([])
     const [value, setValue] = useState(null);
+    const [loader, setLoader] = useState(false)
     const [valuestate, setValueState] = useRecoilState(machineDropdownAtom);
     const [tabsdisplay, setTabsDisplay] = useState(false)
 
@@ -48,6 +50,7 @@ const MachinePage = () =>
 
         setValueState(value)
         setTabsDisplay(true)
+        setLoader(true)
 
     }
 
@@ -81,7 +84,11 @@ const MachinePage = () =>
 
                         </Grid.Col>
 
-                        <Grid.Col span={6}> <Button mt={25} variant="filled" disabled={value === null} onClick={handleSetGlobalDPValue}>Search</Button></Grid.Col>
+                        <Grid.Col span={6}>
+                            <ButtonComponent mt={25} variant="filled" disabled={value === null} onClick={handleSetGlobalDPValue}
+                                loading={loader}
+                            >Search</ButtonComponent>
+                        </Grid.Col>
                     </Grid>
                 </Card.Section>
 
@@ -91,7 +98,7 @@ const MachinePage = () =>
 
                             <Tabs.Tab value="details">Details</Tabs.Tab>
                             <Tabs.Tab value="kpi">KPI</Tabs.Tab>
-                            <Tabs.Tab value="iostatus">IO Status</Tabs.Tab>
+                            <Tabs.Tab value="iostatus">Status</Tabs.Tab>
                             <Tabs.Tab value="control">Control</Tabs.Tab>
 
                         </Tabs.List>

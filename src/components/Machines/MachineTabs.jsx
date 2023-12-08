@@ -31,7 +31,9 @@ const MachineTabs = () =>
                         Authorization: window.localStorage.getItem("Authorization")
                     }
                 }).then((resp) => (
+
                     setMachineDetails(resp.data.general_details)
+
 
                 ))
             }
