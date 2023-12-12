@@ -27,14 +27,14 @@ const LoginForm = () =>
 
 
     const navigate = useNavigate();
-    useEffect(() =>
-    {
-        if (window.location.pathname === "/")
-        {
-            navigate('/login')
+    // useEffect(() =>
+    // {
+    //     if (window.location.pathname === "/")
+    //     {
+    //         navigate('/login')
 
-        }
-    })
+    //     }
+    // })
 
     function handleLogin(e)
     {

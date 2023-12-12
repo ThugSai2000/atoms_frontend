@@ -12,6 +12,7 @@ import MachinePage from './pages/MachinePage';
 import TrailPage from './pages/TrailPage';
 import DashBoardPage from './pages/DashBoardPage';
 import SettingsPage from './pages/SettingsPage';
+import Home from './components/home/Home';
 
 
 function App() {
@@ -27,10 +28,8 @@ function App() {
     <RecoilRoot>
     <Router >
             <Routes>
-              <Route exact path='/' element={<LoginForm/>}>
-                <Route exact path='/login' />
-              </Route>
-                
+              <Route exact path='/' element={<Home/>} />
+              <Route exact path='/login' element={<LoginForm/>}/>
               <Route element={<PrivateRoutes/>}>
                   <Route exact path='/dashboard' element={token ? <DashBoardPage /> : <LoginForm/>} />
                   <Route exact path='/machinelist' element={token ? <MachinePage /> : <LoginForm/>}/> 

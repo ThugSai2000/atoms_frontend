@@ -6,7 +6,7 @@ import { atom, } from 'recoil';
 //  export default client
 
 const client = axios.create({
-    baseURL: 'http://127.0.0.1/backend',
+    baseURL: 'http://atomssol.in/backend',
 });
  export default client
 
