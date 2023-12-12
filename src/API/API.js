@@ -1,16 +1,21 @@
 import axios from "axios";
 import { atom, } from 'recoil';
-import  generalDetailsAtom  from "../Store/store";
 // const client = axios.create({
-//     baseURL: 'http://65.0.154.172',
+//     baseURL: 'http://192.168.29.144:8000/backend',
 // });
 //  export default client
- const client = axios.create({
-    baseURL: 'http://65.0.154.172/',
+
+const client = axios.create({
+    baseURL: 'http://127.0.0.1:8000/backend',
 });
  export default client
+
+//  const client = axios.create({
+//     baseURL: 'http://65.0.154.172/backend',
+// });
+//  export default client
  
- export const machineDropdownAtom = atom({
+export const machineDropdownAtom = atom({
     key: 'globalCount',
     default: "",
 });

@@ -68,75 +68,9 @@ const ReportPage = () =>
     {
         setReportSelectedOption(value)
     }
-
-
     useEffect(() =>
     {
-        setTableDisplay(val === "table" ? true : false);
-        setGraphDisplay(val !== "table" ? true : false);
-
-    }, [val])
-
-    const onClickReport = () =>
-    {
-        const request = {
-            machine_id: machineSelectedOption,
-            start_datetime: convertedDates[0],
-            end_datetime: convertedDates[1] === "1970-0-1" ? convertedDates[0] : convertedDates[1],
-            report_type: reportSelectedOption
-        }
-
-
-        client.post('/Reports/', request, {
-            headers: {
-                Authorization: window.localStorage.getItem('Authorization')
-            }
-        }).then((resp) =>
-        {
-
-            const r = resp.data
-            setRow(r.data)
-            const barGraphData = r.data.map((value) => value)
-            const timeData = []
-            const labelsbarGraphData = r.data.map((time) => timeData.push(time.timestamp.slice(11, 19)))
-            setTime(timeData)
-
-            const newData = barGraphData.map((item) =>
-            {
-                return { high: item.value[1], low: item.value[0] };
-            });
-            const newDatacsv = barGraphData.map((item) =>
-            {
-                return { high: item.value[1], low: item.value[0], };
-            });
-            console.log("expo:t to csv test : " + JSON.stringify(newData))
-            setCsv(newDatacsv)
-
-            const lowData = []
-            Object.values(newData).filter((low) =>
-            {
-                return lowData.push(low.low)
-            })
-
-            setLow(lowData)
-            const highData = []
-            Object.values(newData).filter((high) =>
-            {
-                return highData.push(high.high)
-            })
-
-            setHigh(highData)
-        }).catch((error) =>
-            console.log(error))
-
-        setDisplayBody(true)
-        // return () => a()
-
-    }
-
-    useEffect(() =>
-    {
-        return () => axios.get('http://65.0.154.172/Report_List/', {
+        return () => client.get('/Report_List/', {
             headers: {
                 Authorization: window.localStorage.getItem('Authorization')
             }
@@ -147,9 +81,6 @@ const ReportPage = () =>
 
         })
     }, [])
-
-
-
 
     let plantArr = [];
     let modelArr = [];
@@ -239,6 +170,72 @@ const ReportPage = () =>
             return filterReportArr.push(item)
         }
     })))
+
+
+    useEffect(() =>
+    {
+        setTableDisplay(val === "table" ? true : false);
+        setGraphDisplay(val !== "table" ? true : false);
+
+    }, [val])
+
+    const onClickReport = () =>
+    {
+        const request = {
+            machine_id: machineSelectedOption,
+            start_datetime: convertedDates[0],
+            end_datetime: convertedDates[1] === "1970-0-1" ? convertedDates[0] : convertedDates[1],
+            report_type: reportSelectedOption
+        }
+
+
+        client.post('/Reports/', request, {
+            headers: {
+                Authorization: window.localStorage.getItem('Authorization')
+            }
+        }).then((resp) =>
+        {
+
+            const r = resp.data
+            setRow(r.data)
+            const barGraphData = r.data.map((value) => value)
+            const timeData = []
+            const labelsbarGraphData = r.data.map((time) => timeData.push(time.timestamp.slice(11, 19)))
+            setTime(timeData)
+
+            const newData = barGraphData.map((item) =>
+            {
+                return { high: item.value[1], low: item.value[0] };
+            });
+            const newDatacsv = barGraphData.map((item) =>
+            {
+                return { high: item.value[1], low: item.value[0], };
+            });
+            console.log("expo:t to csv test : " + JSON.stringify(newData))
+            setCsv(newDatacsv)
+
+            const lowData = []
+            Object.values(newData).filter((low) =>
+            {
+                return lowData.push(low.low)
+            })
+
+            setLow(lowData)
+            const highData = []
+            Object.values(newData).filter((high) =>
+            {
+                return highData.push(high.high)
+            })
+
+            setHigh(highData)
+        }).catch((error) =>
+            console.log(error))
+
+        setDisplayBody(true)
+        // return () => a()
+
+    }
+
 
     //  export to pdf
     const exportPdf = () =>
