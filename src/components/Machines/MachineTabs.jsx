@@ -6,9 +6,10 @@ import { useRecoilValue } from 'recoil'
 import ManualDocs from './ManualsDocs'
 import SimpleGridComponent from '../simplegrid/SimpleGridComponent'
 import { BiDownload, BiSolidFileDoc } from 'react-icons/bi'
+import ManualsandDocsCard from '../cards/ManualsandDocsCard'
 
 
-const MachineTabs = () =>
+const MachineTabs = ({ value }) =>
 {
 
     const [machineDetails, setMachineDetails] = useState({});
@@ -17,14 +18,14 @@ const MachineTabs = () =>
 
     useEffect(() =>
     {
-        if (dpvalue !== "")
+        if (value !== "")
         {
             const generalDetails = () =>
             {
 
                 client.get("/machine_details/", {
                     params: {
-                        machine_id: dpvalue,
+                        machine_id: value,
                         module: "Details"
                     },
                     headers: {
@@ -35,12 +36,12 @@ const MachineTabs = () =>
                     setMachineDetails(resp.data.general_details)
 
 
-                ))
+                )).catch((error) => console.log("error", error))
             }
             generalDetails()
         }
 
-    }, [dpvalue])
+    }, [value])
     return (
 
 
@@ -116,40 +117,7 @@ const MachineTabs = () =>
                 </Card></Grid.Col>
 
                 {/* Manual & Docs card */}
-                <Grid.Col span={7}><Card
-                    shadow="sm"
-                    padding="xl"
-                    component="a"
-                    className='subCard' style={{ height: '17rem' }}
-                >
-                    <Text style={{ marginBottom: '0.5rem' }} className='subcardHeading'>
-                        Manuals & Docs
-                    </Text>
-                    <SimpleGrid cols={4}>
-                        <Box mt={23} ml={24} style={{ display: 'flex', flexDirection: 'column' }}>
-
-                            <BiSolidFileDoc size={32} />
-                        </Box>
-
-                        <Box mt={16} style={{ display: 'flex', flexDirection: 'column' }}>
-
-                            <Text size={14} w={500}>Electrical Drawing</Text>
-                            <label style={{ fontSize: '12px' }} >Name</label>
-                        </Box>
-                        <Box style={{ display: 'flex', flexDirection: 'column' }}>
-
-                            <Text>Created</Text>
-                            <label >2-3-3000</label>
-                        </Box>
-                        <Box style={{ textAlign: 'center', fontSize: '2rem' }}>
-
-                            <BiDownload />
-
-                        </Box>
-                    </SimpleGrid>
-                    {/* <ManualDocs /> */}
-
-                </Card></Grid.Col>
+                <Grid.Col span={7}><ManualsandDocsCard /></Grid.Col>
 
                 {/* Technical Details card */}
 
@@ -159,8 +127,6 @@ const MachineTabs = () =>
                     className='subCard' style={{ height: '22.2rem', padding: '0rem', backgroundColor: 'transparent' }}>
 
                     <TableTechnicalDetails />
-
-
 
                 </Card></Grid.Col>
             </Grid>

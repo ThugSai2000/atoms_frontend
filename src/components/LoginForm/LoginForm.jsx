@@ -6,20 +6,15 @@ import
 {
     TextInput,
     PasswordInput,
-    Anchor,
     Paper,
     Title,
     Container,
-    Group,
     Button,
     Image,
     Box,
     Text,
 } from '@mantine/core';
 import client from '../../API/API';
-import { useRecoilState } from 'recoil';
-import Logout from '../NavBar/Logout';
-import { userAtom } from '../../Store/store';
 
 const LoginForm = () =>
 {
@@ -29,7 +24,6 @@ const LoginForm = () =>
     const [password, setPassword] = useState("")
     const [loader, setLoader] = useState(null)
     const [error, setError] = useState('');
-    const [user, setUser] = useRecoilState(userAtom)
 
 
     const navigate = useNavigate();
@@ -59,7 +53,7 @@ const LoginForm = () =>
                     window.localStorage.setItem("username", response.data.username)
                     navigate('/dashboard')
 
-                    setUser(response.data.username)
+
                     // console.log("user : " + response.data.username)
 
                 } else

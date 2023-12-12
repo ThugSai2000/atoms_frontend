@@ -1,9 +1,5 @@
 import { atom,} from 'recoil';
 // general deatails store
-export const  userAtom = atom({
-    key:'userAtom',
-    default:''
-})
 export  const  generalDetailsAtom  = atom(
    { key:'generalDetailsAtom',
     default:null}

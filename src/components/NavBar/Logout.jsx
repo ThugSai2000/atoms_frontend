@@ -3,11 +3,10 @@ import { Avatar, Menu } from '@mantine/core';
 import { Link, useNavigate } from 'react-router-dom';
 import "./CSS/navbarTop.css"
 import client from '../../API/API';
-import { useRecoilValue } from 'recoil';
-import { userAtom } from '../../Store/store';
+
 const Logout = () =>
 {
-    const userValue = useRecoilValue(userAtom)
+
     const navigate = useNavigate()
 
 

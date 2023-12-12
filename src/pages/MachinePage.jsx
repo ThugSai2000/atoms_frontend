@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Card, Container, Grid, Loader, ScrollArea, Tabs, Text, } from '@mantine/core'
+import { Button, Card, Container, Grid, Loader, ScrollArea, Skeleton, Tabs, Text, } from '@mantine/core'
 import '../components/Machines/CSS/machinesDetails.css'
 import MachineKpi from '../components/Machines/MachineKpi'
 import IOStatusMachines from '../components/Machines/IOStatusMachines'
@@ -86,7 +86,6 @@ const MachinePage = () =>
 
                         <Grid.Col span={6}>
                             <ButtonComponent mt={25} variant="filled" disabled={value === null} onClick={handleSetGlobalDPValue}
-                                loading={loader}
                             >Search</ButtonComponent>
                         </Grid.Col>
                     </Grid>
@@ -108,7 +107,7 @@ const MachinePage = () =>
                         <ScrollArea h={500} scrollHideDelay={0} id='scrollarea'>
                             {tabsdisplay && <Card width={'100%'} height={'100%'} className='card'>
                                 <Tabs.Panel value="details" pt="xs" >
-                                    <MachineTabs />
+                                    <MachineTabs value={value} />
                                 </Tabs.Panel>
                                 <Tabs.Panel value="kpi" pt="xs" >
                                     <MachineKpi />
