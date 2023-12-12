@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import {
     RecoilRoot,
@@ -26,10 +26,10 @@ function App() {
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
    <MantineProvider theme={{colorScheme}} withGlobalStyles withNormalizeCSS>
     <RecoilRoot>
-    <Router >
+    <Router>
             <Routes>
               <Route exact path='/' element={<Home/>} />
-              <Route exact path='/login' element={<LoginForm/>}/>
+              <Route exact path='/login' element={ !token ? <Navigate to={'/dashboard'}/> : <LoginForm/>}/>
               <Route element={<PrivateRoutes/>}>
                   <Route exact path='/dashboard' element={token ? <DashBoardPage /> : <LoginForm/>} />
                   <Route exact path='/machinelist' element={token ? <MachinePage /> : <LoginForm/>}/> 
