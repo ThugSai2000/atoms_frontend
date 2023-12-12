@@ -80,13 +80,13 @@ const MainLayout
                     {sidebarItems.map((item, index) => (
 
                         <Link
+                            key={item.link}
                             to={item.link}
-                            key={item.label}
                             onClick={() => handleLinkClick(item)}
                             style={{ textDecoration: 'none', color: 'var(--color-text)' }}
                         >
 
-                            <div className="sidebar-item" key={index} >
+                            <div className="sidebar-item" key={item.link} >
                                 <Tooltip label={item.label}
                                     color="grey"
                                     position="right-start"

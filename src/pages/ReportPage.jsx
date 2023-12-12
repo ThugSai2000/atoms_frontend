@@ -114,7 +114,8 @@ const ReportPage = () =>
             })
         })
     }
-    if (reportList !== null)
+    console.log(reportList.status)
+    if (reportList !== null || reportList.status)
     {
         filterData()
 
