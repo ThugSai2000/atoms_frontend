@@ -12,7 +12,6 @@ import { useEffect } from 'react'
 import { useRecoilValue } from 'recoil'
 import client from '../API/API'
 import BarChart from '../components/charts/BarChart'
-import axios from 'axios'
 import jsPDF from 'jspdf'
 import { usePDF } from 'react-to-pdf'
 import { download, generateCsv, mkConfig } from 'export-to-csv'
@@ -42,6 +41,21 @@ const ReportPage = () =>
     const { toPDF, targetRef } = usePDF({ filename: 'Trailgraph.pdf' });
     const convertedDates = []
     const [displayBody, setDisplayBody] = useState(false)
+
+    useEffect(() =>
+    {
+        client.get('/Report_List/', {
+            headers: {
+                Authorization: window.localStorage.getItem('Authorization')
+            }
+        }).then((response) =>
+        {
+            const resp = response.data.report
+            setReportList(resp)
+
+        })
+    }, [])
+
     const allDates = date.map((date) =>
     {
         const newDate = new Date(date)
@@ -68,19 +82,7 @@ const ReportPage = () =>
     {
         setReportSelectedOption(value)
     }
-    useEffect(() =>
-    {
-        return () => client.get('/Report_List/', {
-            headers: {
-                Authorization: window.localStorage.getItem('Authorization')
-            }
-        }).then((response) =>
-        {
-            const resp = response.data.report
-            setReportList(resp)
 
-        })
-    }, [])
 
     let plantArr = [];
     let modelArr = [];

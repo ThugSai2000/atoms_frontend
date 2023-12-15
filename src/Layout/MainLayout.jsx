@@ -52,11 +52,11 @@ const MainLayout
             { link: '/settings', icon: <AiFillSetting size={showText ? '1.5rem' : '1.5rem'} />, label: 'Settings' },
         ];
 
-        const handleLinkClick = (item) =>
-        {
+        // const handleLinkClick = (item) =>
+        // {
 
-            setActive(item.link);
-        };
+        //     setActive(item.link);
+        // };
         // useEffect(() =>
         // {
         //     if (active === location.pathname)
@@ -82,11 +82,11 @@ const MainLayout
                         <Link
                             key={item.link}
                             to={item.link}
-                            onClick={() => handleLinkClick(item)}
+                            // onClick={() => handleLinkClick(item)}
                             style={{ textDecoration: 'none', color: 'var(--color-text)' }}
                         >
 
-                            <div className="sidebar-item" key={item.link} >
+                            <div className="sidebar-item">
                                 <Tooltip label={item.label}
                                     color="grey"
                                     position="right-start"
@@ -106,6 +106,30 @@ const MainLayout
 
 
                     ))}
+                    {/* <Link
+
+                        to='/reports'
+
+                        style={{ textDecoration: 'none', color: 'var(--color-text)' }}
+                    >
+
+                        <div className="sidebar-item" >
+                            <Tooltip
+                                color="grey"
+                                position="right-start"
+                                withArrow
+                            >
+                                <div className='sidebar-icon' >
+                                    <BiSolidReport size={showText ? '1.5rem' : '1.5rem'} />
+                                </div>
+                            </Tooltip>
+
+                            {showText && <div className="sidebar-text" >
+                                <span>Settings</span>
+                            </div>}
+
+                        </div>
+                    </Link> */}
 
                 </div>
                 }

@@ -30,7 +30,7 @@ function App() {
             <Routes>
               <Route exact path='/' element={<Home/>} />
               <Route exact path='/login' element={ !token ? <Navigate to={'/dashboard'}/> : <LoginForm/>}/>
-              <Route element={<PrivateRoutes/>}>
+              <Route path='/' element={<PrivateRoutes/>}>
                   <Route exact path='/dashboard' element={token ? <DashBoardPage /> : <LoginForm/>} />
                   <Route exact path='/machinelist' element={token ? <MachinePage /> : <LoginForm/>}/> 
                   <Route exact path='/trails' element={token ?  <TrailPage /> : <LoginForm/>} />
