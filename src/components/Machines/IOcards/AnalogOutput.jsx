@@ -5,24 +5,25 @@ import { machineDropdownAtom } from '../../../API/API';
 import { useRecoilValue } from 'recoil';
 import { analogOutputAtom } from '../../../Store/store';
 import NoDataAvailable from '../../noDataAvailable/NoDataAvailable';
+import AnalogDataCard from '../../cards/AnalogDataCard';
 
-const CardsAnalogOutput = ({ data }) =>
-{
+// const CardsAnalogOutput = ({ data }) =>
+// {
 
-    return (
-        <Card w={'215px'} h={'60px'} shadow="sm" p={0} radius={'6px'} style={{ backgroundColor: 'var(--color-white)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'left' }}>
+//     return (
+//         <Card w={'215px'} h={'60px'} shadow="sm" p={0} radius={'6px'} style={{ backgroundColor: 'var(--color-white)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'left' }}>
 
-            <Text size={'1.1rem'} pl={'1rem'} weight={500} color='var(--color-bold-text)'>{data.name}</Text>
+//             <Text size={'1.1rem'} pl={'1rem'} weight={500} color='var(--color-bold-text)'>{data.name}</Text>
 
-            <Group>
-                <Text size={'0.9rem'} pl={'1rem'} fw={500} color={data.color} >{data.value}</Text>
-                <Text size={'0.9rem'} pl={'0.2rem'} fw={500} color='var(--color-bold-text)' >{data.unit}</Text>
-            </Group>
+//             <Group>
+//                 <Text size={'0.9rem'} pl={'1rem'} fw={500} color={data.color} >{data.value}</Text>
+//                 <Text size={'0.9rem'} pl={'0.2rem'} fw={500} color='var(--color-bold-text)' >{data.unit}</Text>
+//             </Group>
 
 
-        </Card>
-    )
-}
+//         </Card>
+//     )
+// }
 
 const AnalogOutput = () =>
 {
@@ -48,7 +49,7 @@ const AnalogOutput = () =>
 
                 {
                     cdata.length > 0 ? cdata.map((card) => (
-                        <CardsAnalogOutput key={card.id} data={card} />
+                        <AnalogDataCard key={card.id} data={card} />
                     )) : <NoDataAvailable />
                 }
 

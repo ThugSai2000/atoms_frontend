@@ -4,27 +4,28 @@ import { useRecoilValue } from 'recoil'
 import { paramsAtomglobal } from '../../../Store/store'
 import { machineDropdownAtom } from '../../../API/API'
 import NoDataAvailable from '../../noDataAvailable/NoDataAvailable'
-const CardsParams = ({ data }) =>
-{
+import AnalogDataCard from '../../cards/AnalogDataCard'
+// const CardsParams = ({ data }) =>
+// {
 
 
-    // console.log(data + " what") dsgtjhkjhkjg
+//     // console.log(data + " what") dsgtjhkjhkjg
 
 
-    return (
-        <Card w={'215px'} h={'60px'} shadow="sm" p={0} radius={'6px'} style={{ backgroundColor: 'var(--color-white)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'left' }}>
+//     return (
+//         <Card w={'215px'} h={'60px'} shadow="sm" p={0} radius={'6px'} style={{ backgroundColor: 'var(--color-white)', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'left' }}>
 
-            <Text size={'1.1rem'} pl={'1rem'} weight={500} color='var(--color-bold-text)'>{data.name}</Text>
+//             <Text size={'1.1rem'} pl={'1rem'} weight={500} color='var(--color-bold-text)'>{data.name}</Text>
 
-            <Group spacing={4}>
-                <Text size={'0.9rem'} pl={'1rem'} fw={500} color={data.color} >{data.value}</Text>
-                <Text size={'0.9rem'} fw={500} color='var(--color-bold-text)' >{data.unit}</Text>
-            </Group>
+//             <Group spacing={4}>
+//                 <Text size={'0.9rem'} pl={'1rem'} fw={500} color={data.color} >{data.value}</Text>
+//                 <Text size={'0.9rem'} fw={500} color='var(--color-bold-text)' >{data.unit}</Text>
+//             </Group>
 
 
-        </Card>
-    )
-}
+//         </Card>
+//     )
+// }
 const Params = () =>
 {
 
@@ -48,7 +49,7 @@ const Params = () =>
 
                 {
                     cdata.length > 0 ? cdata.map((card) => (
-                        <CardsParams key={card.name} data={card} />
+                        <AnalogDataCard key={card.name} data={card} />
                     )) : <NoDataAvailable />
                 }
 

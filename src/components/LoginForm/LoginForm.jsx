@@ -15,7 +15,9 @@ import
     Text,
 } from '@mantine/core';
 import client from '../../API/API';
-
+import Logo from "../../assets/A_favicon_io/apple-touch-icon.png"
+import { FaRegUserCircle } from "react-icons/fa";
+import { CiUnlock } from "react-icons/ci";
 const LoginForm = () =>
 {
 
@@ -35,6 +37,14 @@ const LoginForm = () =>
 
     //     }
     // })
+
+    useEffect(() =>
+    {
+        window.localStorage.getItem('username') === null ? navigate('/login') : navigate('/dashboard')
+
+    }, [navigate])
+
+
 
     function handleLogin(e)
     {
@@ -68,6 +78,7 @@ const LoginForm = () =>
             });
 
     }
+
     return (
         <div>
             {
@@ -75,26 +86,28 @@ const LoginForm = () =>
                     navigate('/dashboard')
                 ) :
 
-                    <Container size={350} mt={120} id='container_login' color='var(-color-bg)'>
-                        <Box m={30} mt={80}>
-                            <Image width={300} h={80} src="https://automactechnologies.in/wp-content/uploads/2021/04/logo-1536x364.png" alt="" />
-                        </Box>
+                    <Container size={350} mt={120} id='container_login' color='var(-color-bg)' >
 
 
-                        <Paper withBorder shadow="md" p={30} radius="md" >
+                        <Paper withBorder shadow="xl" p={30} radius="md" >
                             <form onSubmit={handleLogin}>
                                 {/* <Box display={'flex'} >
                                 <Image width={150} mt={20} mb={20} h={60} src="https://automactechnologies.in/wp-content/uploads/2021/04/logo-1536x364.png" alt="" />
                                 </Box> */}
+                                <Paper display={'grid'} m={'auto'}>
+                                    <Image src={Logo} width={'6rem'} height={'6rem'} m={'auto'} />
 
-                                <Title
+                                </Paper>
+                                {/* <Text
                                     align="center"
                                     mt={5} mb={20}
                                     weight={500}
                                     color='var(--color-bold-text)'
+                                    size={26}
+
                                 >
                                     Login
-                                </Title>
+                                </Text> */}
                                 <TextInput
                                     label="Username"
                                     value={username}
@@ -102,6 +115,9 @@ const LoginForm = () =>
                                     placeholder="Enter Username"
                                     error={!!error}
                                     required
+                                    radius={'1.25rem'}
+                                    mt={50}
+                                    icon={<FaRegUserCircle size={'1rem'} />}
                                 />
                                 {error && <Text color="red">{error}</Text>}
 
@@ -114,7 +130,8 @@ const LoginForm = () =>
                                     error={!!error}
                                     required
                                     mt="md"
-
+                                    radius={'1.25rem'}
+                                    icon={<CiUnlock size={'1rem'} />}
                                 />
 
 
@@ -123,7 +140,7 @@ const LoginForm = () =>
                                         Forgot password?
                                     </Anchor>
                                 </Group> */}
-                                <Button fullWidth mt="xl" mb={20} type='submit' loading={loader}>
+                                <Button fullWidth mt="xl" mb={20} type='submit' loading={loader} radius={'1.25rem'}>
                                     Login
                                 </Button>
 

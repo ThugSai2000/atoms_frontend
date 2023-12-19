@@ -4,29 +4,30 @@ import { digitaloutputglobal, machineDropdownAtom, } from '../../../API/API';
 
 import { useRecoilValue } from 'recoil';
 import NoDataAvailable from '../../noDataAvailable/NoDataAvailable';
+import DigitalDataCard from '../../cards/DigitalDataCard';
 
 
-const CardsDigitalOutput = ({ data }) =>
-{
+// const CardsDigitalOutput = ({ data }) =>
+// {
 
-    return (
+//     return (
 
-        <Card w={'215px'} h={'60px'} shadow="sm" p={0} radius={'6px'} style={{ backgroundColor: 'var(--color-white)', display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
-            <Box w={'75%'} h={'100%'} shadow="sm" radius={'6px'} style={{ boxSizing: 'border-box', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} >
-                <Text size={'1rem'} p={'3px'} weight={500} color='var(--color-bold-text)'>{data.name}</Text>
-            </Box>
+//         <Card w={'215px'} h={'60px'} shadow="sm" p={0} radius={'6px'} style={{ backgroundColor: 'var(--color-white)', display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+//             <Box w={'75%'} h={'100%'} shadow="sm" radius={'6px'} style={{ boxSizing: 'border-box', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} >
+//                 <Text size={'1rem'} p={'3px'} weight={500} color='var(--color-bold-text)'>{data.name}</Text>
+//             </Box>
 
-            <Box w={'25%'} h={'100%'} shadow="sm" radius={'6px'} bg={data.color}  >
-                <Text size={'1rem'} mt={14} weight={400} color='var(--color-white)' align='center'>{data.value}</Text>
-            </Box>
-        </Card>
-
-
-    )
+//             <Box w={'25%'} h={'100%'} shadow="sm" radius={'6px'} bg={data.color}  >
+//                 <Text size={'1rem'} mt={14} weight={400} color='var(--color-white)' align='center'>{data.value}</Text>
+//             </Box>
+//         </Card>
 
 
+//     )
 
-}
+
+
+// }
 
 
 const DigitalOutput = () =>
@@ -53,7 +54,7 @@ const DigitalOutput = () =>
 
                 {
                     cdata.length > 0 ? cdata.map((card) => (
-                        <CardsDigitalOutput key={card.name} data={card} />
+                        <DigitalDataCard key={card.name} data={card} />
                     )) : <NoDataAvailable />
                 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import NavBarTopComponent from '../components/NavBar/NavBarTopComponent'
 import './Css/pages.css'
 import { ActionIcon, Box, Tooltip, } from '@mantine/core'
@@ -8,7 +8,8 @@ import { GiGears, GiHamburgerMenu } from 'react-icons/gi';
 import { BiSolidDashboard, BiSolidReport } from 'react-icons/bi';
 import { IoMdNotifications } from 'react-icons/io';
 import { AiFillSetting } from 'react-icons/ai';
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { activeStyles } from '../utils/sidebarActive';
 
 
 
@@ -19,9 +20,8 @@ const MainLayout
         let [open, setOpen] = useState(false);
         const [showText, setShowText] = useState(false);
         const [largeNavbar, setLargeNavbar] = useState(false);
-        const [active, setActive] = useState(null);
-        const [activeComponent, setActiveComponent] = useState('');
-        const [linkItem, setLinkItem] = useState(null)
+        const [currentLink, setCurrentLink] = useState(null)
+        const currentLinkRef = useRef(null)
 
         const location = useLocation()
         // console.log("act " + location.pathname)
@@ -52,19 +52,11 @@ const MainLayout
             { link: '/settings', icon: <AiFillSetting size={showText ? '1.5rem' : '1.5rem'} />, label: 'Settings' },
         ];
 
-        // const handleLinkClick = (item) =>
-        // {
+        const handleLinkClick = (item) =>
+        {
 
-        //     setActive(item.link);
-        // };
-        // useEffect(() =>
-        // {
-        //     if (active === location.pathname)
-        //     {
-        //         iconRef.current.style.color = "red";
-        //         console.log("current : " + iconRef.current.sidebarItems)
-        //     }
-        // }, [active, location.pathname])
+            // item.current.setActive(true);
+        };
 
 
         return (
@@ -79,10 +71,17 @@ const MainLayout
 
                     {sidebarItems.map((item, index) => (
 
-                        <Link
+                        <NavLink
+                            ref={currentLinkRef}
                             key={item.link}
                             to={item.link}
-                            // onClick={() => handleLinkClick(item)}
+
+                            // onClick={() =>
+                            // {
+                            //     setCurrentLink(item.link)
+                            //     handleLinkClick(item)
+                            // }} 
+                            // style={currentLink === item.link ? activeStyles : { color: "var(--color-icon)" }}
                             style={{ textDecoration: 'none', color: 'var(--color-text)' }}
                         >
 
@@ -92,7 +91,7 @@ const MainLayout
                                     position="right-start"
                                     withArrow
                                 >
-                                    <div className='sidebar-icon' >
+                                    <div >
                                         {item.icon}
                                     </div>
                                 </Tooltip>
@@ -100,9 +99,8 @@ const MainLayout
                                 {showText && <div className="sidebar-text" >
                                     <span>{item.label}</span>
                                 </div>}
-
                             </div>
-                        </Link>
+                        </NavLink>
 
 
                     ))}
