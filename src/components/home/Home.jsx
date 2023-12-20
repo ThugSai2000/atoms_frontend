@@ -16,11 +16,12 @@ import
     Button,
     SimpleGrid,
     Paper,
+    Group,
 } from '@mantine/core';
 import AutomacScreen1 from "../../assets/20231216_200312_0000.png"
 import AutomacScreenmobile from "../../assets/AndroidScreen.png"
 import AutomacScreenlaptop from "../../assets/Desktop.png"
-
+import IndiaFlag from "../../assets/flag-for-flag-india-svgrepo-com.svg"
 import HeaderLogo from "../../assets/A_favicon_io/favicon-32x32.png"
 import { Link } from 'react-router-dom';
 import "./home.css"
@@ -32,8 +33,12 @@ export default function AppShellDemo()
         <AppShell
 
             footer={
-                <Footer height={60} p="md" w={'unset'} size={24} fw={500} color='var(--color-bold-text)' sx={{ textAlign: 'center', display: 'flex', justifyContent: 'space-between' }} bg={'var(--color-bg)'}>
-                    <Text ml={30}>Made in India</Text>  <Text mr={30}>Powered by AUTOMAC TECHNOLOGIES</Text>
+                <Footer height={60} p="md" w={'unset'} size={24} fw={500} color='var(--color-bold-text)' sx={{ textAlign: 'center', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} bg={'var(--color-bg)'}>
+                    <Group>
+                        <Text ml={30}>Made in India</Text>
+                        <Image src={IndiaFlag} width={24} height={20} mt={5} />
+                    </Group>
+                    <Text mr={30}>Powered by AUTOMAC TECHNOLOGIES</Text>
                 </Footer>
             }
             header={

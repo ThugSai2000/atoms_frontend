@@ -45,11 +45,11 @@ const MainLayout
 
 
         const sidebarItems = [
-            { link: '/dashboard', icon: <BiSolidDashboard size={showText ? '1.5rem' : '1.5rem'} />, label: 'Dashboard' },
-            { link: '/machinelist', icon: <GiGears size={showText ? '1.5rem' : '1.5rem'} />, label: 'Machine' },
-            { link: '/trails', icon: <IoMdNotifications size={showText ? '1.5rem' : '1.5rem'} />, label: 'Trails' },
-            { link: '/reports', icon: <BiSolidReport size={showText ? '1.5rem' : '1.5rem'} />, label: 'Reports' },
-            { link: '/settings', icon: <AiFillSetting size={showText ? '1.5rem' : '1.5rem'} />, label: 'Settings' },
+            { link: '/home', icon: <BiSolidDashboard size={showText ? '1.5rem' : '1.5rem'} />, label: 'Dashboard' },
+            { link: '/home/machinelist', icon: <GiGears size={showText ? '1.5rem' : '1.5rem'} />, label: 'Machine' },
+            { link: '/home/trails', icon: <IoMdNotifications size={showText ? '1.5rem' : '1.5rem'} />, label: 'Trails' },
+            { link: '/home/reports', icon: <BiSolidReport size={showText ? '1.5rem' : '1.5rem'} />, label: 'Reports' },
+            { link: '/home/settings', icon: <AiFillSetting size={showText ? '1.5rem' : '1.5rem'} />, label: 'Settings' },
         ];
 
         const handleLinkClick = (item) =>

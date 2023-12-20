@@ -21,7 +21,7 @@ const Logout = () =>
             if (response.data.status === "Logged_out")
             {
                 localStorage.clear()
-                navigate('/login');
+                navigate('/login') || navigate('/')
 
             }
         })

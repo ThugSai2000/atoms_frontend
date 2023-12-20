@@ -13,11 +13,13 @@ import TrailPage from './pages/TrailPage';
 import DashBoardPage from './pages/DashBoardPage';
 import SettingsPage from './pages/SettingsPage';
 import Home from './components/home/Home';
+import NoDataAvailable from './components/noDataAvailable/NoDataAvailable';
+import PageNotFound404 from './pages/PageNotFound404';
 
 
 function App() {
 
-  let token = true
+ 
    
   const [colorScheme, setColorScheme] = useState('light')
   const toggleColorScheme = (value) => setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
@@ -28,15 +30,21 @@ function App() {
     <RecoilRoot>
     <Router>
             <Routes>
-              <Route exact path='/' element={<Home/>} />
-              <Route exact path='/login' element={ !token ? <Navigate to={'/dashboard'}/> : <LoginForm/>}/>
-              <Route path='/' element={<PrivateRoutes/>}>
-                  <Route exact path='/dashboard' element={token ? <DashBoardPage /> : <LoginForm/>} />
-                  <Route exact path='/machinelist' element={token ? <MachinePage /> : <LoginForm/>}/> 
-                  <Route exact path='/trails' element={token ?  <TrailPage /> : <LoginForm/>} />
-                  <Route exact path='/reports' element={token ? <ReportPage />: <LoginForm/>} />
-                  <Route exact path='/settings' element={token ? <SettingsPage />: <LoginForm/>} />
-                </Route>     
+              <Route exact path='/about' element={<Home/>} />
+
+              <Route exact path='/' element={ window.localStorage.getItem('username') !== null ? <Navigate to={'/home'}/> : <LoginForm/>} >
+                  <Route exact path='/login'/>
+                <Route />
+              </Route>
+              {/* <Route exact path='/login' element={ window.localStorage.getItem('username') !== null ? <Navigate to={'/dashboard'}/> : <LoginForm/>}/> */}
+              <Route path='/home' element={<PrivateRoutes/>}>
+                  <Route index  element={ <DashBoardPage /> } />
+                  <Route exact path='/home/machinelist' element={ <MachinePage /> }/> 
+                  <Route exact path='/home/trails' element={  <TrailPage /> } />
+                  <Route exact path='/home/reports' element={ <ReportPage />} />
+                  <Route exact path='/home/settings' element={ <SettingsPage />} />
+                </Route> 
+                <Route path='*' element={<PageNotFound404/>}/>    
             </Routes>
         </Router>
      </RecoilRoot>

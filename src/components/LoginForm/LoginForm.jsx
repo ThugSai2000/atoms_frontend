@@ -29,20 +29,16 @@ const LoginForm = () =>
 
 
     const navigate = useNavigate();
-    // useEffect(() =>
-    // {
-    //     if (window.location.pathname === "/")
-    //     {
-    //         navigate('/login')
-
-    //     }
-    // })
-
     useEffect(() =>
     {
-        window.localStorage.getItem('username') === null ? navigate('/login') : navigate('/dashboard')
+        if (window.location.pathname === "/")
+        {
+            navigate('/login')
+            window.localStorage.getItem('username') === null ? navigate('/login') : navigate('/home')
 
+        }
     }, [navigate])
+
 
 
 
@@ -61,7 +57,7 @@ const LoginForm = () =>
                 {
                     window.localStorage.setItem("Authorization", response.data.generated_token)
                     window.localStorage.setItem("username", response.data.username)
-                    navigate('/dashboard')
+                    navigate('/home')
 
 
                     // console.log("user : " + response.data.username)
