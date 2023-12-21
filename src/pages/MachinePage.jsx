@@ -44,6 +44,45 @@ const MachinePage = () =>
 
     }, []);
 
+    useEffect(() =>
+    {
+        let baseurl = `ws://65.0.154.172:8000/machine_mqtt_data/?machine_id=ABD2`
+        const socket = new WebSocket(baseurl)
+
+        socket.onopen = (event) =>
+        {
+
+            console.log("WebSocket connection established:", event)
+        }
+
+        socket.onmessage = (event) =>
+        {
+            const websocketdata = JSON.parse(event.data)
+            console.log("io data : " + websocketdata)
+
+        }
+
+        socket.onclose = () =>
+        {
+
+            socket.onopen = (event) =>
+            {
+                console.log('WebSocket connection established again after closed :', event);
+
+            }
+        }
+        return () =>
+        {
+            if (socket)
+            {
+                console.log('WebSocket connection closed: close event');
+                socket.close()
+
+            }
+        }
+
+
+    }, [])
 
     const handleSetGlobalDPValue = () =>
     {

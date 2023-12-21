@@ -40,7 +40,7 @@ const MachineKpi = () =>
             {
 
                 console.log('WebSocket connection established:', event);
-                setSocket(socket);
+                // setSocket(socket);
             };
 
             socket.onmessage = (event) =>
@@ -73,7 +73,7 @@ const MachineKpi = () =>
                 {
 
                     console.log('WebSocket connection established again after closed :', event);
-                    setSocket(socket);
+                    // setSocket(socket);
                 };
             };
 

@@ -64,6 +64,7 @@ const LoginForm = () =>
 
                 } else
                 {
+                    setLoader(false)
                     setError("Enter correct password or username ")
                 }
 
@@ -77,24 +78,20 @@ const LoginForm = () =>
 
     return (
         <div>
-            {
-                currentUser ? (
-                    navigate('/dashboard')
-                ) :
 
-                    <Container size={350} mt={120} id='container_login' color='var(-color-bg)' >
+            <Container size={350} mt={120} id='container_login' color='var(-color-bg)' >
 
 
-                        <Paper withBorder shadow="xl" p={30} radius="md" >
-                            <form onSubmit={handleLogin}>
-                                {/* <Box display={'flex'} >
+                <Paper withBorder shadow="xl" p={30} radius="md" >
+                    <form onSubmit={handleLogin}>
+                        {/* <Box display={'flex'} >
                                 <Image width={150} mt={20} mb={20} h={60} src="https://automactechnologies.in/wp-content/uploads/2021/04/logo-1536x364.png" alt="" />
                                 </Box> */}
-                                <Paper display={'grid'} m={'auto'}>
-                                    <Image src={Logo} width={'6rem'} height={'6rem'} m={'auto'} />
+                        <Paper display={'grid'} m={'auto'}>
+                            <Image src={Logo} width={'6rem'} height={'6rem'} m={'auto'} />
 
-                                </Paper>
-                                {/* <Text
+                        </Paper>
+                        {/* <Text
                                     align="center"
                                     mt={5} mb={20}
                                     weight={500}
@@ -104,48 +101,48 @@ const LoginForm = () =>
                                 >
                                     Login
                                 </Text> */}
-                                <TextInput
-                                    label="Username"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.currentTarget.value)}
-                                    placeholder="Enter Username"
-                                    error={!!error}
-                                    required
-                                    radius={'1.25rem'}
-                                    mt={50}
-                                    icon={<FaRegUserCircle size={'1rem'} />}
-                                />
-                                {error && <Text color="red">{error}</Text>}
+                        <TextInput
+                            label="Username"
+                            value={username}
+                            onChange={(e) => setUsername(e.currentTarget.value)}
+                            placeholder="Enter Username"
+                            error={!!error}
+                            required
+                            radius={'1.25rem'}
+                            mt={50}
+                            icon={<FaRegUserCircle size={'1rem'} />}
+                        />
+                        {error && <Text color="red">{error}</Text>}
 
 
-                                <PasswordInput
-                                    label="Password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.currentTarget.value)}
-                                    placeholder="Enter password"
-                                    error={!!error}
-                                    required
-                                    mt="md"
-                                    radius={'1.25rem'}
-                                    icon={<CiUnlock size={'1rem'} />}
-                                />
+                        <PasswordInput
+                            label="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.currentTarget.value)}
+                            placeholder="Enter password"
+                            error={!!error}
+                            required
+                            mt="md"
+                            radius={'1.25rem'}
+                            icon={<CiUnlock size={'1rem'} />}
+                        />
 
 
-                                {/* <Group position="apart" mt="lg">
+                        {/* <Group position="apart" mt="lg">
                                     <Anchor component="button" size="sm">
                                         Forgot password?
                                     </Anchor>
                                 </Group> */}
-                                <Button fullWidth mt="xl" mb={20} type='submit' loading={loader} radius={'1.25rem'}>
-                                    Login
-                                </Button>
+                        <Button fullWidth mt="xl" mb={20} type='submit' loading={loader} radius={'1.25rem'}>
+                            Login
+                        </Button>
 
-                            </form>
+                    </form>
 
-                        </Paper>
-                    </Container>
+                </Paper>
+            </Container>
 
-            }
+
         </div>);
 };
 
