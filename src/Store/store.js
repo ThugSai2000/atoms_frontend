@@ -37,3 +37,7 @@ export const segmentControlState = atom({
     default:'table'
 })
 
+///////// username //////
+
+export const user = window.localStorage.getItem('username')
+

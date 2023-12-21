@@ -73,67 +73,67 @@ const Controls = () =>
     // console.log('cdata ' + JSON.stringify(cdata))
     // const [loading, setLoading] = useState(false);
 
-    // useEffect(() =>
-    // {
-    //     if (dpvalue !== " ")
-    //     {
-    //         const controlapi = setInterval(() =>
-    //         {
+    useEffect(() =>
+    {
+        if (dpvalue !== " ")
+        {
+            const controlapi = setInterval(() =>
+            {
 
-    //             // setLoading(true)
-    //             client.get('/machine_details/', {
-    //                 params: {
-    //                     machine_id: dpvalue,
-    //                     module: 'control'
-    //                 },
-    //                 headers: {
-    //                     Authorization: window.localStorage.getItem("Authorization")
-    //                 },
-    //             }).then(async (response) =>
-    //             {
-    //                 setIsLoading(false)
-    //                 setCData(response.data.control.digital_output);
-    //                 ///////////// conteol timestanp
-    //                 const contime = JSON.stringify(response.data.control.db_timestamp)
-    //                 const stringWithoutQuotes = contime.replace(/['"]/g, "");
-    //                 const stringWithSpace = stringWithoutQuotes.replace(/T/, " ");
-    //                 const stringWithoutDecimal = stringWithSpace.substring(0, 19);
-    //                 const stringWithNewDate = stringWithoutDecimal.replace(/2023-10-04/, "04-10-2023");
-    //                 setControltime(stringWithNewDate)
-
-
-    //             });
-    //         }, 3000)
-
-    //         return () => (
-    //             clearInterval(controlapi)
-    //         )
+                // setLoading(true)
+                client.get('/machine_details/', {
+                    params: {
+                        machine_id: dpvalue,
+                        module: 'control'
+                    },
+                    headers: {
+                        Authorization: window.localStorage.getItem("Authorization")
+                    },
+                }).then(async (response) =>
+                {
+                    setIsLoading(false)
+                    setCData(response.data.control.digital_output);
+                    ///////////// conteol timestanp
+                    const contime = JSON.stringify(response.data.control.db_timestamp)
+                    const stringWithoutQuotes = contime.replace(/['"]/g, "");
+                    const stringWithSpace = stringWithoutQuotes.replace(/T/, " ");
+                    const stringWithoutDecimal = stringWithSpace.substring(0, 19);
+                    const stringWithNewDate = stringWithoutDecimal.replace(/2023-10-04/, "04-10-2023");
+                    setControltime(stringWithNewDate)
 
 
+                });
+            }, 3000)
 
-    //     }
-    // }, [dpvalue])
+            return () => (
+                clearInterval(controlapi)
+            )
+
+
+
+        }
+    }, [dpvalue])
 
 
 
 
     return (
-        <div>hii</div>
-        // <div>
-        //     <Title fw={500} fz={16} p={'1rem'} ml={'0rem'} color='var(--color-onclick)'>Last updated at: {controltime}</Title>
-        //     <Container fluid bg='var(--color-white)' p={16}>
-        //         <Title fw={500} fz={16} p={'0.5rem'} ml={'0rem'} color='var(--color-bold-text)'>Digital Output </Title>
-        //         <Flex className='flex-container' justify="flex-start" columnGap={20} rowGap={'1rem'} wrap="wrap" h={'100%'} pt={'1rem'} pl={'2.5rem'} pr={0} pb={'1rem'}  >
-        //             {cdata.length > 0 ? cdata.map((card) => (
-        //                 <ControlCard key={card.name} data={card} />
-        //             )) : <NoDataAvailable />
-        //             }
+        // <div>hii</div>
+        <div>
+            <Title fw={500} fz={16} p={'1rem'} ml={'0rem'} color='var(--color-onclick)'>Last updated at: {controltime}</Title>
+            <Container fluid bg='var(--color-white)' p={16}>
+                <Title fw={500} fz={16} p={'0.5rem'} ml={'0rem'} color='var(--color-bold-text)'>Digital Output </Title>
+                <Flex className='flex-container' justify="flex-start" columnGap={20} rowGap={'1rem'} wrap="wrap" h={'100%'} pt={'1rem'} pl={'2.5rem'} pr={0} pb={'1rem'}  >
+                    {cdata.length > 0 ? cdata.map((card) => (
+                        <ControlCard key={card.name} data={card} />
+                    )) : <NoDataAvailable />
+                    }
 
 
-        //         </Flex>
-        //         {/* <ControlCard /> */}
-        //     </Container>
-        // </div>
+                </Flex>
+                {/* <ControlCard /> */}
+            </Container>
+        </div>
     )
 }
 

@@ -65,12 +65,9 @@ const MachinePage = () =>
 
 
             {/* mt={40} */}
-            <Card className='card'  >
-
+            <Card className='card'>
                 <Card.Section ><Text size={24} fw={500} color='var(--color-bold-text)'>Machines</Text></Card.Section>
-
                 <Card.Section style={{ padding: '1rem', paddingBottom: '1.5rem' }} className='card'>
-
                     <Grid span={6}>
                         <Grid.Col span={3}>
                             <SelectDropdown
@@ -80,26 +77,20 @@ const MachinePage = () =>
                                 selectedOption={value}
                                 onChange={machineSelectedOption}
                             />
-
-
                         </Grid.Col>
-
                         <Grid.Col span={6}>
                             <ButtonComponent mt={25} variant="filled" disabled={value === null} onClick={handleSetGlobalDPValue}
                             >Search</ButtonComponent>
                         </Grid.Col>
                     </Grid>
                 </Card.Section>
-
                 <Card.Section>
                     <Tabs defaultValue="details" >
                         <Tabs.List>
-
                             <Tabs.Tab value="details">Details</Tabs.Tab>
                             <Tabs.Tab value="kpi">KPI</Tabs.Tab>
                             <Tabs.Tab value="iostatus">Status</Tabs.Tab>
                             <Tabs.Tab value="control">Control</Tabs.Tab>
-
                         </Tabs.List>
 
                         {/* Machines Details Tab */}
