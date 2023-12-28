@@ -74,6 +74,7 @@ const MainLayout
 
                             <div className="sidebar-item">
                                 <Tooltip label={item.label}
+                                    disabled={showText}
                                     color="grey"
                                     position="right-start"
                                     withArrow
@@ -92,10 +93,10 @@ const MainLayout
 
 
                     ))}
-                    {showText && <Card color='var(--color-bg)' w={'100%'} sx={{ position: 'relative', top: '350px', display: 'grid', placeItems: 'center' }}>
-                        <Box w={'70%'}>
-                            <Text ml={10} size={10}>POWERED BY</Text>
-                            <Image src={AtomsLogo} h={'1rem'} width={'100%'} />
+                    {showText && <Card bg='#e9ecef' w={'80%'} ml={'10%'} sx={{ position: 'relative', top: '350px', display: 'grid', placeItems: 'center' }} radius={'md'} p={5}>
+                        <Box w={'80%'} p={5}>
+                            <Text ml={10} size={12} fw={500} color='var(--color-text)'>POWERED BY</Text>
+                            <Image src={AtomsLogo} width={'100%'} />
                         </Box>
 
 
