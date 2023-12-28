@@ -3,6 +3,7 @@ import { Container, Input, Tooltip, Group, Box } from '@mantine/core';
 import { AiOutlineSearch } from 'react-icons/ai';
 import Notifications from './Notifications';
 import Logout from './Logout';
+import AtomsLogo from "./../../assets/AtomsLogo.png"
 
 
 import './CSS/navbarTop.css';
@@ -20,7 +21,7 @@ const NarBarTopComponent = () =>
         <div id="navCompanyLogo">
           <Group position='left'>
             <img
-              src="https://automactechnologies.in/wp-content/uploads/2021/04/logo-1536x364.png"
+              src={AtomsLogo}
               alt=""
             />
           </Group>

@@ -2,27 +2,20 @@ import { useState } from 'react';
 import
 {
     AppShell,
-    Navbar,
     Header,
     Footer,
-    Aside,
     Text,
-    MediaQuery,
-    Burger,
-    useMantineTheme,
     Container,
     Image,
     Box,
     Button,
     SimpleGrid,
-    Paper,
     Group,
 } from '@mantine/core';
-import AutomacScreen1 from "../../assets/20231216_200312_0000.png"
 import AutomacScreenmobile from "../../assets/AndroidScreen.png"
 import AutomacScreenlaptop from "../../assets/Desktop.png"
 import IndiaFlag from "../../assets/flag-for-flag-india-svgrepo-com.svg"
-import HeaderLogo from "../../assets/A_favicon_io/favicon-32x32.png"
+import HeaderLogo from "../../assets/AtomsLogo.png"
 import { Link } from 'react-router-dom';
 import "./home.css"
 
@@ -45,7 +38,7 @@ export default function AppShellDemo()
                 <Header height={{ base: 50, md: 70 }} p="md" bg={'var(--color-bg)'}>
                     <div style={{ height: '100%' }}>
                         <SimpleGrid cols={2}>
-                            <Image src={HeaderLogo} width={'inherit'} h={'inherit'} sx={{ marginLeft: '50px' }} />
+                            <Image src={HeaderLogo} width={'8rem'} h={'2rem'} sx={{ marginLeft: '50px' }} mt={8} />
                             <Link to={'/login'}>
                                 <Button w={100} ml={600}>
                                     Login

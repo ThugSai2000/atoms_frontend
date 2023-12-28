@@ -21,9 +21,9 @@
    
 }
 #navCompanyLogo img{
-    height: 2.5rem;
+    height: 2rem;
     width: 8rem;
-    margin-top: 8px;
+    margin-top: 14px;
     margin-left: 3.5rem;
     object-fit: contain;
 }
