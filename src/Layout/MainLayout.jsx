@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 import NavBarTopComponent from '../components/NavBar/NavBarTopComponent'
 import './Css/pages.css'
-import { ActionIcon, Box, Tooltip, } from '@mantine/core'
+import { ActionIcon, Box, Button, Card, Group, Image, Text, Tooltip, } from '@mantine/core'
 import { AppShell, Header } from '@mantine/core';
 
 import { GiGears, GiHamburgerMenu } from 'react-icons/gi';
 import { BiSolidDashboard, BiSolidReport } from 'react-icons/bi';
 import { IoMdNotifications } from 'react-icons/io';
 import { AiFillSetting } from 'react-icons/ai';
-import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { activeStyles } from '../utils/sidebarActive';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import AtomsLogo from '../assets/AtomsLogo.png'
 
 
 const MainLayout
@@ -48,14 +48,9 @@ const MainLayout
             { link: '/home/machine', icon: <GiGears size={showText ? '1.5rem' : '1.5rem'} />, label: 'Machine' },
             { link: '/home/trail', icon: <IoMdNotifications size={showText ? '1.5rem' : '1.5rem'} />, label: 'Trail' },
             { link: '/home/report', icon: <BiSolidReport size={showText ? '1.5rem' : '1.5rem'} />, label: 'Report' },
-            { link: '/home/setting', icon: <AiFillSetting size={showText ? '1.5rem' : '1.5rem'} />, label: 'Setting' },
+            { link: '/home/settings', icon: <AiFillSetting size={showText ? '1.5rem' : '1.5rem'} />, label: 'Settings' },
         ];
 
-        const handleLinkClick = (item) =>
-        {
-
-            // item.current.setActive(true);
-        };
 
 
         return (
@@ -73,13 +68,6 @@ const MainLayout
                         <NavLink
                             key={item.link}
                             to={item.link}
-                            className='navLink'
-                            // onClick={() =>
-                            // {
-                            //     setCurrentLink(item.link)
-                            //     handleLinkClick(item)
-                            // }} 
-                            // style={currentLink === item.link ? activeStyles : { color: "var(--color-icon)" }}
                             style={{ textDecoration: 'none', color: 'var(--color-text)' }}
 
                         >
@@ -97,53 +85,22 @@ const MainLayout
 
                                 {showText && <div className="sidebar-text" >
                                     <span>{item.label}</span>
+
                                 </div>}
                             </div>
                         </NavLink>
 
 
                     ))}
+                    {showText && <Card color='var(--color-bg)' w={'100%'} sx={{ position: 'relative', top: '350px', display: 'grid', placeItems: 'center' }}>
+                        <Box w={'70%'}>
+                            <Text ml={10} size={10}>POWERED BY</Text>
+                            <Image src={AtomsLogo} h={'1rem'} width={'100%'} />
+                        </Box>
 
-                    {/* <NavLink
-                        to='/home'
-                    >
 
-                        <div className="sidebar-item">
-                            <Tooltip label={'DashBoard'}
-                                color="grey"
-                                position="right-start"
-                                withArrow
-                            >
-                                <div>
-                                    <BiSolidDashboard />
-                                </div>
-                            </Tooltip>
+                    </Card>}
 
-                            {showText && <div className="sidebar-text" >
-                                <span>DashBoard</span>
-                            </div>}
-                        </div>
-                    </NavLink>
-                    <NavLink
-                        to='/home/machinelist'
-                    >
-
-                        <div className="sidebar-item">
-                            <Tooltip label={'DashBoard'}
-                                color="grey"
-                                position="right-start"
-                                withArrow
-                            >
-                                <div>
-                                    <GiGears />
-                                </div>
-                            </Tooltip>
-
-                            {showText && <div className="sidebar-text" >
-                                <span>Machines</span>
-                            </div>}
-                        </div>
-                    </NavLink> */}
 
                 </div>
                 }

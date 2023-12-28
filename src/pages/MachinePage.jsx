@@ -114,7 +114,7 @@ const MachinePage = () =>
 
             {/* mt={40} */}
             <Card className='card'>
-                <Card.Section ><Text size={24} fw={500} color='var(--color-bold-text)'>Machines</Text></Card.Section>
+                <Card.Section ><Text size={24} fw={500} color='var(--color-bold-text)'>Machine</Text></Card.Section>
                 <Card.Section style={{ padding: '1rem', paddingBottom: '1.5rem' }} className='card'>
                     <Grid span={6}>
                         <Grid.Col span={3}>

@@ -22,13 +22,13 @@ const NarBarTopComponent = () =>
           <Group position='left'>
             <img
               src={AtomsLogo}
-              alt=""
+              alt="Atoms Logo"
             />
           </Group>
         </div>
         <Group position='right' style={{ margin: '0', alignItems: 'center' }}>
           {/* <div style={{ display: 'flex', alignItems: 'center' }}> */}
-          <Input
+          {/* <Input
             id="navtop_search"
             placeholder="Search..."
             rightSection={
@@ -40,11 +40,11 @@ const NarBarTopComponent = () =>
                 style={{ opacity: 0.5, marginTop: '11px' }} />
 
             }
-          />
-          <Box mt={7} >
+          /> */}
+          {/* <Box mt={7} >
             <Notifications />
-          </Box>
-          <Box  >
+          </Box> */}
+          <Box mt={7}>
             <Logout />
           </Box>
           {/* </div> */}
