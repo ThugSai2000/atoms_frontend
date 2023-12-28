@@ -39,10 +39,10 @@ function App() {
               {/* <Route exact path='/login' element={ window.localStorage.getItem('username') !== null ? <Navigate to={'/dashboard'}/> : <LoginForm/>}/> */}
               <Route exact path='/home' element={<PrivateRoutes/>}>
                   <Route exact path='dashboard'  element={ <DashBoardPage /> } />
-                  <Route exact path='machinelist' element={ <MachinePage /> }/> 
-                  <Route exact path='trails' element={  <TrailPage /> } />
-                  <Route exact path='reports' element={ <ReportPage />} />
-                  <Route exact path='settings' element={ <SettingsPage />} />
+                  <Route exact path='machine' element={ <MachinePage /> }/> 
+                  <Route exact path='trail' element={  <TrailPage /> } />
+                  <Route exact path='report' element={ <ReportPage />} />
+                  <Route exact path='setting' element={ <SettingsPage />} />
                 </Route> 
                 <Route path='*' element={<PageNotFound404/>}/>    
             </Routes>

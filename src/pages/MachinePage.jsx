@@ -5,7 +5,7 @@ import MachineKpi from '../components/Machines/MachineKpi'
 import IOStatusMachines from '../components/Machines/IOStatusMachines'
 import Controls from '../components/Machines/Controls'
 import client from '../API/API'
-import MachineTabs from '../components/Machines/MachineTabs'
+import MachineDetails from '../components/Machines/MachineDetails.jsx'
 import { useRecoilState, } from 'recoil';
 import { machineDropdownAtom } from '../API/API.js';
 import SelectDropdown from '../components/selectDropdown/SelectDropdown.jsx'
@@ -18,6 +18,7 @@ const MachinePage = () =>
 
 
     const [data, setData] = useState([])
+    const [resData, setResData] = useState([])
     const [value, setValue] = useState(null);
     const [loader, setLoader] = useState(false)
     const [valuestate, setValueState] = useRecoilState(machineDropdownAtom);
@@ -37,13 +38,21 @@ const MachinePage = () =>
                 label: machine.machine_id,
                 value: machine.machine_id,
             }));
+
             setData(filteredData);
         }).catch((error) => (
             console.log("error", error)
         ));
 
     }, []);
-
+    // "Manuals_and_Docs": [
+    //     {
+    //         "Document_name": "Electrical_Drawing",
+    //         "Uploaded_by": "harsha",
+    //         "Date": "27/07/2023",
+    //         "Url": "https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-product-brief.pdf"
+    //     }
+    // ]
     // useEffect(() =>
     // {
     //     let baseurl = `ws://65.0.154.172:8000/machine_mqtt_data/?machine_id=ABD2`
@@ -137,7 +146,7 @@ const MachinePage = () =>
                         <ScrollArea h={500} scrollHideDelay={0} id='scrollarea'>
                             {tabsdisplay && <Card width={'100%'} height={'100%'} className='card'>
                                 <Tabs.Panel value="details" pt="xs" >
-                                    <MachineTabs value={value} />
+                                    <MachineDetails value={value} />
                                 </Tabs.Panel>
                                 <Tabs.Panel value="kpi" pt="xs" >
                                     <MachineKpi />

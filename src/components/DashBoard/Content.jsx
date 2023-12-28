@@ -67,7 +67,7 @@ const Content = () =>
 
 
     return (
-        <Container mt={'0.5rem'} fluid><Text size="xl" weight={600} mt={'0.5rem'} ml={'1rem'} style={{ marginBottom: '1rem' }}>
+        <Container mt={'0.3rem'} fluid><Text size={24} fw={500} color='var(--color-bold-text)' ml={'1rem'} style={{ marginBottom: '1rem' }}>
             Dashboard
         </Text>
             <Container size="lg" >
