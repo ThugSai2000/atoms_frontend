@@ -12,7 +12,6 @@ import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-do
 import { activeStyles } from '../utils/sidebarActive';
 
 
-
 const MainLayout
     = () =>
     {
@@ -45,7 +44,7 @@ const MainLayout
 
 
         const sidebarItems = [
-            { link: '/home', icon: <BiSolidDashboard size={showText ? '1.5rem' : '1.5rem'} />, label: 'Dashboard' },
+            { link: '/home/dashboard', icon: <BiSolidDashboard size={showText ? '1.5rem' : '1.5rem'} />, label: 'Dashboard' },
             { link: '/home/machinelist', icon: <GiGears size={showText ? '1.5rem' : '1.5rem'} />, label: 'Machine' },
             { link: '/home/trails', icon: <IoMdNotifications size={showText ? '1.5rem' : '1.5rem'} />, label: 'Trails' },
             { link: '/home/reports', icon: <BiSolidReport size={showText ? '1.5rem' : '1.5rem'} />, label: 'Reports' },
@@ -72,10 +71,9 @@ const MainLayout
                     {sidebarItems.map((item, index) => (
 
                         <NavLink
-                            ref={currentLinkRef}
                             key={item.link}
                             to={item.link}
-
+                            className='navLink'
                             // onClick={() =>
                             // {
                             //     setCurrentLink(item.link)
@@ -83,6 +81,7 @@ const MainLayout
                             // }} 
                             // style={currentLink === item.link ? activeStyles : { color: "var(--color-icon)" }}
                             style={{ textDecoration: 'none', color: 'var(--color-text)' }}
+
                         >
 
                             <div className="sidebar-item">
@@ -91,7 +90,7 @@ const MainLayout
                                     position="right-start"
                                     withArrow
                                 >
-                                    <div >
+                                    <div style={{ color: 'inherit' }}>
                                         {item.icon}
                                     </div>
                                 </Tooltip>
@@ -104,30 +103,47 @@ const MainLayout
 
 
                     ))}
-                    {/* <Link
 
-                        to='/reports'
-
-                        style={{ textDecoration: 'none', color: 'var(--color-text)' }}
+                    {/* <NavLink
+                        to='/home'
                     >
 
-                        <div className="sidebar-item" >
-                            <Tooltip
+                        <div className="sidebar-item">
+                            <Tooltip label={'DashBoard'}
                                 color="grey"
                                 position="right-start"
                                 withArrow
                             >
-                                <div className='sidebar-icon' >
-                                    <BiSolidReport size={showText ? '1.5rem' : '1.5rem'} />
+                                <div>
+                                    <BiSolidDashboard />
                                 </div>
                             </Tooltip>
 
                             {showText && <div className="sidebar-text" >
-                                <span>Settings</span>
+                                <span>DashBoard</span>
                             </div>}
-
                         </div>
-                    </Link> */}
+                    </NavLink>
+                    <NavLink
+                        to='/home/machinelist'
+                    >
+
+                        <div className="sidebar-item">
+                            <Tooltip label={'DashBoard'}
+                                color="grey"
+                                position="right-start"
+                                withArrow
+                            >
+                                <div>
+                                    <GiGears />
+                                </div>
+                            </Tooltip>
+
+                            {showText && <div className="sidebar-text" >
+                                <span>Machines</span>
+                            </div>}
+                        </div>
+                    </NavLink> */}
 
                 </div>
                 }

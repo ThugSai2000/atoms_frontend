@@ -30,6 +30,7 @@ import DigitalDataCard from '../../cards/DigitalDataCard';
 const DigitalInput = () =>
 {
     const [cdata, setCData] = useState([])
+
     const [globalresState, setGlobalresState] = useRecoilState(globalapi)
 
     const [db_timestamp, setDbtimestamp] = useRecoilState(timestampglobal)
@@ -41,7 +42,8 @@ const DigitalInput = () =>
     const dpvalue = useRecoilValue(machineDropdownAtom);
     const [changedDpvalue, setChangedDpvalue] = useState(null);
 
-
+    console.log("websocket data : " + JSON.stringify(cdata))
+    // console.log("Restapi data : " + JSON.stringify(cdata))
 
 
 
@@ -74,17 +76,19 @@ const DigitalInput = () =>
                 const stringWithNewDate = stringWithoutDecimal.replace(/2023-10-04/, "04-10-2023");
                 setDbtimestamp(stringWithNewDate)
 
-                ////////////// digital output response collected
-                var c = JSON.stringify(response.data.iostatus.digital_output)
-                var d = JSON.parse(c)
-                setDigitaloutput(d)
-
                 // ////////////// digital input response collected
                 var a = JSON.stringify(response.data.iostatus.digital_input)
                 var b = JSON.parse(a)
                 // console.log(b)
                 // console.log("DI is running ")
-                setCData(b)
+                // setCData(b)
+
+                ////////////// digital output response collected
+                var c = JSON.stringify(response.data.iostatus.digital_output)
+                var d = JSON.parse(c)
+                setDigitaloutput(d)
+
+
                 // ////////////// analog input response collected
                 var e = JSON.stringify(response.data.iostatus.analog_input)
                 var f = JSON.parse(e)
@@ -112,6 +116,54 @@ const DigitalInput = () =>
 
 
     }, [dpvalue, setAnalogInput, setAnalogOutput, setChangedDpvalue, setDbtimestamp, setDigitaloutput, setGlobalresState, setParams]);
+
+    // useEffect(() =>
+    // {
+    //     let baseurl = `ws://65.0.154.172:8000/machine_mqtt_data/?machine_id=ABD2`
+    //     const socket = new WebSocket(baseurl)
+
+    //     socket.onopen = (event) =>
+    //     {
+
+    //         console.log("WebSocket connection established:", event)
+    //     }
+
+    //     socket.onmessage = (event) =>
+    //     {
+    //         const websocketdata = JSON.parse(event.data)
+    //         // console.log("io data : " + websocketdata)
+    //         setCData(websocketdata.digital_input)
+    //         setAnalogInput(websocketdata.analog_input)
+    //         setAnalogOutput(websocketdata.analog_output)
+    //         //  setChangedDpvalue(websocketdata.) 
+    //         setDbtimestamp(websocketdata.db_timestamp)
+    //         setDigitaloutput(websocketdata.digital_output)
+    //         //  setGlobalresState, 
+    //         setParams()
+
+    //     }
+
+    //     socket.onclose = () =>
+    //     {
+
+    //         socket.onopen = (event) =>
+    //         {
+    //             console.log('WebSocket connection established again after closed :', event);
+
+    //         }
+    //     }
+    //     return () =>
+    //     {
+    //         if (socket)
+    //         {
+    //             console.log('WebSocket connection closed: close event');
+    //             socket.close()
+
+    //         }
+    //     }
+
+
+    // }, [setAnalogInput, setAnalogOutput, setChangedDpvalue, setDbtimestamp, setDigitaloutput, setGlobalresState, setParams])
 
 
     return (

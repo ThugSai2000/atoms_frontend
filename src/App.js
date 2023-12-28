@@ -32,17 +32,17 @@ function App() {
             <Routes>
               <Route exact path='/about' element={<Home/>} />
 
-              <Route exact path='/' element={ window.localStorage.getItem('username') !== null ? <Navigate to={'/home'}/> : <LoginForm/>} >
+              <Route exact path='/' element={ window.localStorage.getItem('username') !== null ? <Navigate to={'/home/dashboard'}/> : <LoginForm/>} >
                   <Route exact path='/login'/>
                 <Route />
               </Route>
               {/* <Route exact path='/login' element={ window.localStorage.getItem('username') !== null ? <Navigate to={'/dashboard'}/> : <LoginForm/>}/> */}
-              <Route path='/home' element={<PrivateRoutes/>}>
-                  <Route index  element={ <DashBoardPage /> } />
-                  <Route exact path='/home/machinelist' element={ <MachinePage /> }/> 
-                  <Route exact path='/home/trails' element={  <TrailPage /> } />
-                  <Route exact path='/home/reports' element={ <ReportPage />} />
-                  <Route exact path='/home/settings' element={ <SettingsPage />} />
+              <Route exact path='/home' element={<PrivateRoutes/>}>
+                  <Route exact path='dashboard'  element={ <DashBoardPage /> } />
+                  <Route exact path='machinelist' element={ <MachinePage /> }/> 
+                  <Route exact path='trails' element={  <TrailPage /> } />
+                  <Route exact path='reports' element={ <ReportPage />} />
+                  <Route exact path='settings' element={ <SettingsPage />} />
                 </Route> 
                 <Route path='*' element={<PageNotFound404/>}/>    
             </Routes>

@@ -10,7 +10,7 @@
 }
 
 .sidebar-text{
-margin-top: 0.3rem;
+/* margin-top: rem; */
 margin-left: 1.2rem; 
 font-size: 1rem;
 text-align: left;
@@ -46,3 +46,11 @@ text-align: left;
     box-sizing: border-box;
     min-height: 100vh;
 }
+.active > div{
+    color: var(--color-onclick);
+}
+.active span{
+    color: var(--color-onclick);
+}
+
+

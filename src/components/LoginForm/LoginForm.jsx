@@ -34,7 +34,7 @@ const LoginForm = () =>
         if (window.location.pathname === "/")
         {
             navigate('/login')
-            window.localStorage.getItem('username') === null ? navigate('/login') : navigate('/home')
+            window.localStorage.getItem('username') === null ? navigate('/login') : navigate('/home/dashboard')
 
         }
     }, [navigate])
@@ -53,16 +53,21 @@ const LoginForm = () =>
         })
             .then(function (response)
             {
+                console.log(response.status)
                 if (response.data.status === 'user_validated')
                 {
                     window.localStorage.setItem("Authorization", response.data.generated_token)
                     window.localStorage.setItem("username", response.data.username)
-                    navigate('/home')
+                    navigate('/home/dashboard')
 
 
                     // console.log("user : " + response.data.username)
 
-                } else
+                } else if (response)
+                {
+
+                }
+                else
                 {
                     setLoader(false)
                     setError("Enter correct password or username ")

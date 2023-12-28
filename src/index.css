@@ -28,4 +28,7 @@ html{
 body{
     font-family: 'Roboto',sans-serif;
 }
+.active{
+    color: var(--color-onclick);
+}
 
