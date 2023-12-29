@@ -10,71 +10,6 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import './CSS/trails.css'
 
-//defining columns outside of the component is fine, is stable
-const columns = [
-    {
-        accessorKey: 'date',
-        header: 'Date',
-
-        size: 108,
-    },
-    {
-        accessorKey: 'time',
-        header: 'Time',
-        size: 108,
-    },
-    {
-        accessorKey: 'sensor1',
-        header: 'Sensor 1',
-        size: 100,
-    },
-    {
-        accessorKey: 'sensor2',
-        header: 'Sensor 2',
-        size: 100,
-    },
-    {
-        accessorKey: 'sensor3',
-        header: 'Sensor 3',
-        size: 100,
-    },
-    {
-        accessorKey: 'sensor4',
-        header: 'Sensor 4',
-        size: 100,
-    },
-    {
-        accessorKey: 'sensor5',
-        header: 'Sensor 5',
-        size: 100,
-    },
-    {
-        accessorKey: 'sensor6',
-        header: 'Sensor 6',
-        size: 100,
-    },
-    {
-        accessorKey: 'sensor7',
-        header: 'Sensor 7',
-        size: 100,
-    },
-    {
-        accessorKey: 'sensor8',
-        header: 'Sensor 8',
-        size: 100,
-    },
-    {
-        accessorKey: 'sensor9',
-        header: 'Sensor 9',
-        size: 100,
-    },
-    {
-        accessorKey: 'sensor10',
-        header: 'Sensor 10',
-        size: 100,
-    },
-];
-
 const csvConfig = mkConfig({
     fieldSeparator: ',',
     decimalSeparator: '.',
@@ -155,19 +90,21 @@ export const HandleToolBar = () =>
     const exportPdf = () =>
     {
         const doc = new jsPDF("landscape")
-        doc.setFontSize(20);
-        doc.text("Trails Data", 50, 15);
 
         doc.autoTable({
             html: '#trails-table',
-            styles: { fillColor: [100, 255, 255] },
-            columnStyles: {
-                id: { fillColor: 255 }
-            },
-            margin: { top: 60 },
+            margin: { top: 10 },
             beforePageContent: function (data)
             {
-                doc.text("Header", 40, 30);
+
+
+                doc.setFontSize(20).text("Trail Data", 120, 15)
+                doc.setFontSize(10)
+                doc.text(`Plant : ${formattedDateString}`, 10, 25);
+                doc.text(`Model : ${formattedDateString}`, 10, 30);
+                doc.text(`Machine : ${formattedDateString}`, 10, 35);
+                doc.text(`Date : ${formattedDateString}`, 10, 40)
+
             }
 
         })

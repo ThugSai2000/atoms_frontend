@@ -93,7 +93,7 @@ const MainLayout
 
 
                     ))}
-                    {showText && <Card bg='#e9ecef' w={'80%'} ml={'10%'} sx={{ position: 'relative', top: '350px', display: 'grid', placeItems: 'center' }} radius={'md'} p={5}>
+                    {showText && <Card bg='#F1F3F5' w={'80%'} ml={'10%'} sx={{ position: 'relative', top: '350px', display: 'grid', placeItems: 'center' }} radius={'md'} p={5}>
                         <Box w={'80%'} p={5}>
                             <Text ml={10} size={12} fw={500} color='var(--color-text)'>POWERED BY</Text>
                             <Image src={AtomsLogo} width={'100%'} />
