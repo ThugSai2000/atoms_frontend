@@ -48,7 +48,7 @@ const MainLayout
             { link: '/home/machine', icon: <GiGears size={showText ? '1.5rem' : '1.5rem'} />, label: 'Machine' },
             { link: '/home/trail', icon: <IoMdNotifications size={showText ? '1.5rem' : '1.5rem'} />, label: 'Trail' },
             { link: '/home/report', icon: <BiSolidReport size={showText ? '1.5rem' : '1.5rem'} />, label: 'Report' },
-            { link: '/home/settings', icon: <AiFillSetting size={showText ? '1.5rem' : '1.5rem'} />, label: 'Settings' },
+            // { link: '/home/settings', icon: <AiFillSetting size={showText ? '1.5rem' : '1.5rem'} />, label: 'Settings' },
         ];
 
 

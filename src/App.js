@@ -42,7 +42,7 @@ function App() {
                   <Route exact path='machine' element={ <MachinePage /> }/> 
                   <Route exact path='trail' element={  <TrailPage /> } />
                   <Route exact path='report' element={ <ReportPage />} />
-                  <Route exact path='settings' element={ <SettingsPage />} />
+                  {/* <Route exact path='settings' element={ <SettingsPage />} /> */}
                 </Route> 
                 <Route path='*' element={<PageNotFound404/>}/>    
             </Routes>
