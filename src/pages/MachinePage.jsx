@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Card, Container, Grid, Loader, ScrollArea, Skeleton, Tabs, Text, } from '@mantine/core'
+import { Accordion, Button, Card, Container, Grid, Loader, ScrollArea, Skeleton, Tabs, Text, Title, } from '@mantine/core'
 import '../components/Machines/CSS/machinesDetails.css'
 import MachineKpi from '../components/Machines/MachineKpi'
 import IOStatusMachines from '../components/Machines/IOStatusMachines'
@@ -10,6 +10,10 @@ import { useRecoilState, } from 'recoil';
 import { machineDropdownAtom } from '../API/API.js';
 import SelectDropdown from '../components/selectDropdown/SelectDropdown.jsx'
 import ButtonComponent from '../components/button/ButtonComponent.jsx'
+import AccordianComponent from '../components/accordian/AccordianComponent.jsx'
+import LoaderComponent from '../components/loader/LoaderComponent.jsx'
+
+
 
 
 
@@ -23,7 +27,18 @@ const MachinePage = () =>
     const [loader, setLoader] = useState(false)
     const [valuestate, setValueState] = useRecoilState(machineDropdownAtom);
     const [tabsdisplay, setTabsDisplay] = useState(false)
+    const [statusData, setStatusData] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [timeStamp, setTimestamp] = useState("")
 
+    // console.log(newdata)
+
+    // if (Object.entries(statusData).length > 0)
+    // {
+    //     setNewData(rest)
+    //     // console.log("reduced " + JSON.stringify(rest))
+
+    // }
 
     useEffect(() =>
     {
@@ -45,6 +60,69 @@ const MachinePage = () =>
         ));
 
     }, []);
+
+
+    useEffect(() =>
+    {
+
+        const interval = setInterval(() =>
+        {
+            client.get('/machine_details/', {
+                params: {
+                    machine_id: value,
+                    module: "iostatus"
+                },
+                headers: {
+                    Authorization: window.localStorage.getItem("Authorization")
+                },
+
+
+            }).then(async (response) =>
+            {
+
+                var globalresponse = response.data.iostatus
+                const dbtime = JSON.stringify(response.data.iostatus.db_timestamp)
+                const stringWithoutQuotes = dbtime.replace(/['"]/g, "");
+                const stringWithSpace = stringWithoutQuotes.replace(/T/, " ");
+                const stringWithoutDecimal = stringWithSpace.substring(0, 19);
+                const stringWithNewDate = stringWithoutDecimal.replace(/2023-10-04/, "04-10-2023");
+                setTimestamp(stringWithNewDate)
+                // globalresponse.map((key) => console.log("exam : " + typeof (key)))
+                //////////// db time stampt response collected
+
+                // const dbtime = JSON.stringify(response.data.iostatus.db_timestamp)
+                // const stringWithoutQuotes = dbtime.replace(/['"]/g, "");
+                // const stringWithSpace = stringWithoutQuotes.replace(/T/, " ");
+                // const stringWithoutDecimal = stringWithSpace.substring(0, 19);
+                // const stringWithNewDate = stringWithoutDecimal.replace(/2023-10-04/, "04-10-2023");
+                // setDbtimestamp(stringWithNewDate)
+                // const extractedData = []
+                // for (const key in globalresponse)
+                // {
+                //     if (Array.isArray(globalresponse[key]))
+                //     {
+                //         extractedData.push(`{${key}:${globalresponse[key]}`)
+
+                //     }
+                // }
+                // console.log('Io status : ' + JSON.stringify(extractedData))
+                const { machine_id, machine_name, db_timestamp, ...rest } = globalresponse
+                setStatusData(rest)
+            }).catch((error) =>
+            {
+                console.log(error);
+            });
+        }, 3000)
+
+        return () => (
+            clearInterval(interval)
+        )
+
+
+
+
+    }, [value]);
+
     // "Manuals_and_Docs": [
     //     {
     //         "Document_name": "Electrical_Drawing",
@@ -150,9 +228,16 @@ const MachinePage = () =>
                                 </Tabs.Panel>
                                 <Tabs.Panel value="kpi" pt="xs" >
                                     <MachineKpi />
+
                                 </Tabs.Panel>
                                 <Tabs.Panel value="iostatus" pt="xs" >
-                                    <IOStatusMachines />
+                                    {/* <IOStatusMachines /> */}
+
+                                    {Object.entries(statusData).length > 0 ? <>
+                                        <Title fw={500} fz={16} p={'1rem'} ml={'0rem'} color='var(--color-onclick)'>Last updated at: {timeStamp}</Title>
+
+                                        <AccordianComponent data={statusData} /></> : <LoaderComponent />}
+
                                 </Tabs.Panel>
                                 <Tabs.Panel value="control" pt="xs" >
                                     <Controls />

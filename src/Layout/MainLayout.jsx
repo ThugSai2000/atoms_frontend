@@ -60,7 +60,7 @@ const MainLayout
                 onClose={handleClose}
                 padding="md"
                 navbar={<div className={`sidebar ${largeNavbar ? 'large-navbar' : ''}`} style={{
-                    marginTop: '5rem', width: largeNavbar ? '13rem' : '4.7rem', transition: 'width 0.1s ease-in', background: 'transparent'
+                    marginTop: '5rem', width: largeNavbar ? '13rem' : '4.7rem', transition: 'width 0.1s ease-in', background: 'transparent', maxHeight: '90vh'
                 }}>
 
                     {sidebarItems.map((item, index) => (
@@ -93,10 +93,11 @@ const MainLayout
 
 
                     ))}
-                    {showText && <Card bg='#F1F3F5' w={'80%'} ml={'10%'} sx={{ position: 'relative', top: '350px', display: 'grid', placeItems: 'center' }} radius={'md'} p={5}>
-                        <Box w={'80%'} p={5}>
-                            <Text ml={10} size={12} fw={500} color='var(--color-text)'>POWERED BY</Text>
-                            <Image src={AtomsLogo} width={'100%'} />
+
+                    {showText && <Card bg='#F1F3F5' ml={32} sx={{ display: 'grid', placeItems: 'center', position: 'absolute', bottom: '25px' }} radius={'md'} p={5} pr={10} pl={10}>
+                        <Box p={5} >
+                            <Text ml={10} size={10} fw={500} color='var(--color-text)'>POWERED BY</Text>
+                            <Image src={AtomsLogo} width={'7rem'} />
                         </Box>
 
 
