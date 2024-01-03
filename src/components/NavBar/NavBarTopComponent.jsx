@@ -22,8 +22,8 @@ const NarBarTopComponent = () =>
 
           <Group position='left'>
             <Image
-              width={104}
-              mt={20}
+              width={'5.5rem'}
+
               ml={56}
               src={window.localStorage.logourl}
               alt="Atoms Logo"
