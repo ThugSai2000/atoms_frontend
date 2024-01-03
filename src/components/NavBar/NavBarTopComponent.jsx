@@ -15,11 +15,7 @@ const NarBarTopComponent = () =>
     <Container size="lg">
 
       <div style={{ padding: '0.5rem' }}>
-
-
-
         <div id="navCompanyLogo" >
-
           <Group position='left'>
             <Image
               width={'5.5rem'}
@@ -29,7 +25,6 @@ const NarBarTopComponent = () =>
               alt="Atoms Logo"
             />
           </Group>
-
         </div>
         <Group position='right' style={{ margin: '0', alignItems: 'center' }}>
           {/* <div style={{ display: 'flex', alignItems: 'center' }}> */}

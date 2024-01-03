@@ -206,7 +206,7 @@ const MachinePage = () =>
                             />
                         </Grid.Col>
                         <Grid.Col span={6}>
-                            <ButtonComponent mt={25} variant="filled" disabled={true} onClick={handleSetGlobalDPValue}
+                            <ButtonComponent mt={25} variant="filled" disabled={value === null} onClick={handleSetGlobalDPValue}
                             >Search</ButtonComponent>
                         </Grid.Col>
                     </Grid>
