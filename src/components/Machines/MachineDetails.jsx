@@ -121,14 +121,15 @@ const MachineDetails = ({ value }) =>
 
                 {/* Technical Details card */}
 
-                <Grid.Col span={12}> <Card
+                <Grid.Col span={12}> <Box
                     shadow="sm"
                     component="a"
-                    className='subCard' style={{ height: '22.2rem', padding: '0rem', backgroundColor: 'transparent' }}>
+                    // height:22.2rem
+                    className='subCard' style={{ height: 'inherit', padding: '0rem', backgroundColor: 'transparent' }}>
 
                     <TableTechnicalDetails />
 
-                </Card></Grid.Col>
+                </Box></Grid.Col>
             </Grid>
         </Card>
 

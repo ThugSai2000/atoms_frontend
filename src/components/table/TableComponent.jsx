@@ -10,7 +10,11 @@ const TableComponent = (props) =>
         <Container fluid >
             <Table verticalSpacing="md" horizontalSpacing='xl' striped shadow='sm' highlightOnHover id={id}>
 
-                <thead >
+                <thead style={{
+                    position: "sticky",
+                    top: 0,
+                    width: 'auto', background: 'white', zIndex: 3
+                }}>
                     <tr>
                         <th style={{ width: '100px' }}>Date</th>
                         <th style={{ width: '100px' }}>Time</th>

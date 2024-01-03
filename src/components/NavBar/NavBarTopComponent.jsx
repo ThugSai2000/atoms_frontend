@@ -1,12 +1,12 @@
 import React from 'react';
-import { Container, Input, Tooltip, Group, Box } from '@mantine/core';
+import { Container, Input, Tooltip, Group, Box, Image } from '@mantine/core';
 import { AiOutlineSearch } from 'react-icons/ai';
 import Notifications from './Notifications';
 import Logout from './Logout';
 import AtomsLogo from "./../../assets/AtomsLogo.png"
 
 
-import './CSS/navbarTop.css';
+// import './CSS/navbarTop.css';
 
 const NarBarTopComponent = () =>
 {
@@ -18,13 +18,18 @@ const NarBarTopComponent = () =>
 
 
 
-        <div id="navCompanyLogo">
+        <div id="navCompanyLogo" >
+
           <Group position='left'>
-            <img
-              src={AtomsLogo}
+            <Image
+              width={104}
+              mt={20}
+              ml={56}
+              src={window.localStorage.logourl}
               alt="Atoms Logo"
             />
           </Group>
+
         </div>
         <Group position='right' style={{ margin: '0', alignItems: 'center' }}>
           {/* <div style={{ display: 'flex', alignItems: 'center' }}> */}

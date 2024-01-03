@@ -1,11 +1,12 @@
 import { Accordion, SimpleGrid, Title } from '@mantine/core'
-import React from 'react'
+import React, { useState } from 'react'
 import DigitalDataCard from '../cards/DigitalDataCard'
 import AnalogDataCard from '../cards/AnalogDataCard'
 
 const AccordianComponent = (props) =>
 {
     const { data } = props
+    const [value, setValue] = useState([] || "item-1");
     function formatString(text)
     {
         // Replace underscores with spaces
@@ -19,7 +20,7 @@ const AccordianComponent = (props) =>
     return (
         <div>
 
-            <Accordion defaultValue={"Digital Input"} variant="contained" bg={'var(--color-white)'}>
+            <Accordion value={value} onChange={setValue} variant="contained" bg={'var(--color-white)'} >
                 {Object.entries(data).map(([key, value]) => (
 
                     value.length > 0 ? <Accordion.Item key={key} value={key}>

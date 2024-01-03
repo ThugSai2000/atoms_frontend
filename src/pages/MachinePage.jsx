@@ -108,6 +108,7 @@ const MachinePage = () =>
                 // console.log('Io status : ' + JSON.stringify(extractedData))
                 const { machine_id, machine_name, db_timestamp, ...rest } = globalresponse
                 setStatusData(rest)
+
             }).catch((error) =>
             {
                 console.log(error);
@@ -205,7 +206,7 @@ const MachinePage = () =>
                             />
                         </Grid.Col>
                         <Grid.Col span={6}>
-                            <ButtonComponent mt={25} variant="filled" disabled={value === null} onClick={handleSetGlobalDPValue}
+                            <ButtonComponent mt={25} variant="filled" disabled={true} onClick={handleSetGlobalDPValue}
                             >Search</ButtonComponent>
                         </Grid.Col>
                     </Grid>
@@ -221,28 +222,32 @@ const MachinePage = () =>
 
                         {/* Machines Details Tab */}
 
-                        <ScrollArea h={500} scrollHideDelay={0} id='scrollarea'>
-                            {tabsdisplay && <Card width={'100%'} height={'100%'} className='card'>
-                                <Tabs.Panel value="details" pt="xs" >
-                                    <MachineDetails value={value} />
-                                </Tabs.Panel>
-                                <Tabs.Panel value="kpi" pt="xs" >
-                                    <MachineKpi />
+                        <ScrollArea h={500} scrollHideDelay={0} id='scrollarea' pb={70}>
+                            {tabsdisplay &&
 
-                                </Tabs.Panel>
-                                <Tabs.Panel value="iostatus" pt="xs" >
-                                    {/* <IOStatusMachines /> */}
+                                <Card width={'100%'} h={'100%'} className='card'>
+                                    <Tabs.Panel value="details" pt="xs" >
 
-                                    {Object.entries(statusData).length > 0 ? <>
-                                        <Title fw={500} fz={16} p={'1rem'} ml={'0rem'} color='var(--color-onclick)'>Last updated at: {timeStamp}</Title>
+                                        <MachineDetails value={value} />
 
-                                        <AccordianComponent data={statusData} /></> : <LoaderComponent />}
+                                    </Tabs.Panel>
+                                    <Tabs.Panel value="kpi" pt="xs" >
+                                        <MachineKpi />
 
-                                </Tabs.Panel>
-                                <Tabs.Panel value="control" pt="xs" >
-                                    <Controls />
-                                </Tabs.Panel>
-                            </Card>}
+                                    </Tabs.Panel>
+                                    <Tabs.Panel value="iostatus" pt="xs" >
+                                        {/* <IOStatusMachines /> */}
+
+                                        {Object.entries(statusData).length > 0 ? <>
+                                            <Title fw={500} fz={16} p={'1rem'} ml={'0rem'} color='var(--color-onclick)'>Last updated at: {timeStamp}</Title>
+
+                                            <AccordianComponent data={statusData} /></> : <LoaderComponent />}
+
+                                    </Tabs.Panel>
+                                    <Tabs.Panel value="control" pt="xs" >
+                                        <Controls />
+                                    </Tabs.Panel>
+                                </Card>}
                         </ScrollArea>
                     </Tabs>
                 </Card.Section>

@@ -1,17 +1,14 @@
 import React, { useEffect, useState, } from 'react';
 import "./LoginForm.css";
 import { useNavigate } from 'react-router-dom';
-// import cookies from 'cookies';
 import
 {
     TextInput,
     PasswordInput,
     Paper,
-    Title,
     Container,
     Button,
     Image,
-    Box,
     Text,
 } from '@mantine/core';
 import client from '../../API/API';
@@ -21,7 +18,6 @@ import { CiUnlock } from "react-icons/ci";
 const LoginForm = () =>
 {
 
-    const [currentUser, setCurrentUser] = useState(false);
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [loader, setLoader] = useState(null)
@@ -35,7 +31,6 @@ const LoginForm = () =>
         {
             navigate('/login')
             window.localStorage.getItem('username') === null ? navigate('/login') : navigate('/home/dashboard')
-
         }
     }, [navigate])
 
@@ -58,6 +53,7 @@ const LoginForm = () =>
                 {
                     window.localStorage.setItem("Authorization", response.data.generated_token)
                     window.localStorage.setItem("username", response.data.username)
+                    window.localStorage.setItem("logourl", response.data.logo_url)
                     navigate('/home/dashboard')
 
 

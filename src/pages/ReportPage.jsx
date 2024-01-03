@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Container, Flex, Grid, Group, Paper, Title } from '@mantine/core'
+import { Box, Container, Flex, Grid, Group, Paper, ScrollArea, Title } from '@mantine/core'
 import SelectDropdown from '../components/selectDropdown/SelectDropdown'
 import ButtonComponent from '../components/button/ButtonComponent'
 import { DatePickerInput } from '@mantine/dates'
@@ -372,7 +372,9 @@ const ReportPage = () =>
                         {
                             tableDisplay &&
                             <div ref={targetRef}>
-                                <TableComponent row={row} id='reports-table' />
+                                <ScrollArea offsetScrollbars h={400} >
+                                    <TableComponent row={row} id='reports-table' />
+                                </ScrollArea>
                             </div>
                         }
 

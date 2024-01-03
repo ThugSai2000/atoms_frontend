@@ -20,13 +20,13 @@
     
    
 }
-#navCompanyLogo img{
+/* #navCompanyLogo img{
     
     width: 6.5rem;
     margin-top: 20px;
     margin-left: 3.5rem;
     object-fit: contain;
-}
+} */
 #navtop_search {
 margin-top: 0.7rem;
 min-height: 2.25rem;
