@@ -44,10 +44,10 @@ const MainLayout
 
 
         const sidebarItems = [
-            { link: '/home/dashboard', icon: <BiSolidDashboard size={showText ? '1.5rem' : '1.5rem'} />, label: 'Dashboard' },
-            { link: '/home/machine', icon: <GiGears size={showText ? '1.5rem' : '1.5rem'} />, label: 'Machine' },
-            { link: '/home/trail', icon: <IoMdNotifications size={showText ? '1.5rem' : '1.5rem'} />, label: 'Trail' },
-            { link: '/home/report', icon: <BiSolidReport size={showText ? '1.5rem' : '1.5rem'} />, label: 'Report' },
+            { link: '/app/dashboard', icon: <BiSolidDashboard size={showText ? '1.5rem' : '1.5rem'} />, label: 'Dashboard' },
+            { link: '/app/machine', icon: <GiGears size={showText ? '1.5rem' : '1.5rem'} />, label: 'Machine' },
+            { link: '/app/trail', icon: <IoMdNotifications size={showText ? '1.5rem' : '1.5rem'} />, label: 'Trail' },
+            { link: '/app/report', icon: <BiSolidReport size={showText ? '1.5rem' : '1.5rem'} />, label: 'Report' },
             // { link: '/home/settings', icon: <AiFillSetting size={showText ? '1.5rem' : '1.5rem'} />, label: 'Settings' },
         ];
 

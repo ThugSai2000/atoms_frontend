@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Accordion, Button, Card, Container, Grid, Loader, ScrollArea, Skeleton, Tabs, Text, Title, } from '@mantine/core'
 import '../components/Machines/CSS/machinesDetails.css'
 import MachineKpi from '../components/Machines/MachineKpi'
-import IOStatusMachines from '../components/Machines/IOStatusMachines'
 import Controls from '../components/Machines/Controls'
 import client from '../API/API'
 import MachineDetails from '../components/Machines/MachineDetails.jsx'
@@ -87,24 +86,7 @@ const MachinePage = () =>
                 const stringWithoutDecimal = stringWithSpace.substring(0, 19);
                 const stringWithNewDate = stringWithoutDecimal.replace(/2023-10-04/, "04-10-2023");
                 setTimestamp(stringWithNewDate)
-                // globalresponse.map((key) => console.log("exam : " + typeof (key)))
-                //////////// db time stampt response collected
 
-                // const dbtime = JSON.stringify(response.data.iostatus.db_timestamp)
-                // const stringWithoutQuotes = dbtime.replace(/['"]/g, "");
-                // const stringWithSpace = stringWithoutQuotes.replace(/T/, " ");
-                // const stringWithoutDecimal = stringWithSpace.substring(0, 19);
-                // const stringWithNewDate = stringWithoutDecimal.replace(/2023-10-04/, "04-10-2023");
-                // setDbtimestamp(stringWithNewDate)
-                // const extractedData = []
-                // for (const key in globalresponse)
-                // {
-                //     if (Array.isArray(globalresponse[key]))
-                //     {
-                //         extractedData.push(`{${key}:${globalresponse[key]}`)
-
-                //     }
-                // }
                 // console.log('Io status : ' + JSON.stringify(extractedData))
                 const { machine_id, machine_name, db_timestamp, ...rest } = globalresponse
                 setStatusData(rest)
@@ -134,7 +116,7 @@ const MachinePage = () =>
     // ]
     // useEffect(() =>
     // {
-    //     let baseurl = `ws://65.0.154.172:8000/machine_mqtt_data/?machine_id=ABD2`
+    //     let baseurl = `ws://65.0.154.172:8000/machine_mqtt_data/?machine_id=${value}`
     //     const socket = new WebSocket(baseurl)
 
     //     socket.onopen = (event) =>
@@ -146,8 +128,16 @@ const MachinePage = () =>
     //     socket.onmessage = (event) =>
     //     {
     //         const websocketdata = JSON.parse(event.data)
-    //         console.log("io data : " + websocketdata)
-
+    //         // console.log("io data : " + websocketdata)
+    //         // console.log("data" + websocketdata.db_timestamp)
+    //         const dbtime = JSON.stringify(websocketdata.db_timestamp)
+    //         const stringWithoutQuotes = dbtime.replace(/['"]/g, "");
+    //         const stringWithSpace = stringWithoutQuotes.replace(/T/, " ");
+    //         const stringWithoutDecimal = stringWithSpace.substring(0, 19);
+    //         const stringWithNewDate = stringWithoutDecimal.replace(/2023-10-04/, "04-10-2023");
+    //         setTimestamp(stringWithNewDate)
+    //         const { machine_id, machine_name, db_timestamp, ...rest } = websocketdata
+    //         setStatusData(rest)
     //     }
 
     //     socket.onclose = () =>
@@ -170,7 +160,7 @@ const MachinePage = () =>
     //     }
 
 
-    // }, [])
+    // }, [value])
 
     const handleSetGlobalDPValue = () =>
     {
@@ -192,7 +182,7 @@ const MachinePage = () =>
 
 
             {/* mt={40} */}
-            <Card className='card'>
+            <Card className='card' h={625}>
                 <Card.Section ><Text size={24} fw={500} color='var(--color-bold-text)'>Machine</Text></Card.Section>
                 <Card.Section style={{ padding: '1rem', paddingBottom: '1.5rem' }} className='card'>
                     <Grid span={6}>

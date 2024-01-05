@@ -141,7 +141,7 @@ const TrailPage = () =>
 
                     <SimpleGrid
                         cols={5}
-                        spacing={'xl'}
+                        spacing={'2rem'}
                         id='trailsHeader'>
 
                         <SelectDropdown
@@ -165,28 +165,29 @@ const TrailPage = () =>
                             value={selectedMachineOption}
                             onChange={handleselectedMachine}
                         />
-                        <DatesProvider>
-                            <DatePickerInput w={240}
-                                // defaultDate={new Date()}
-                                icon={<BiCalendarAlt size='1.3rem' color='var(--color-icon)' />}
-                                value={dateValue}
-                                styles={{
-                                    calendar: {
-                                        width: '220px',
-                                    },
-                                    day: {
-                                        width: '30px'
-                                    }
-                                }}
-                                onChange={setDateValue}
-                                valueFormat="YYYY-MM-DD"
-                                label='Date'
-                                highlightToday={true}
-                            // rightSection={<BiCalendarAlt size='1.3rem' color='var(--color-icon)' />}
+                        {/* <DatesProvider> */}
+                        <DatePickerInput
+                            // defaultDate={new Date()}
+                            icon={<BiCalendarAlt size='1.3rem' color='var(--color-icon)' />}
+                            value={dateValue}
+                            styles={{
+                                calendar: {
+                                    width: '220px',
+                                },
+                                day: {
+                                    width: '30px'
+                                }
+                            }}
+                            onChange={setDateValue}
+                            valueFormat="YYYY-MM-DD"
+                            label='Date'
+                            highlightToday={true}
+                        // rightSection={<BiCalendarAlt size='1.3rem' color='var(--color-icon)' />}
 
-                            />
-                        </DatesProvider>
-                        <ButtonComponent mt={25} w={240} color='var(--color-onclick)' onClick={handleTrailsData}>Search
+                        />
+                        {/* </DatesProvider> */}
+
+                        <ButtonComponent mt={25} color='var(--color-onclick)' onClick={handleTrailsData}>Search
                         </ButtonComponent>
 
                     </SimpleGrid>

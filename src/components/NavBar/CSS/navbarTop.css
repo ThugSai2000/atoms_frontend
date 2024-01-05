@@ -12,9 +12,7 @@
 
 }
 
-#navCompanyLogo{
-    display: flex;
-    align-items: center;
+#navCompanyLogo{  
     position: absolute;
     left: 1rem;
     

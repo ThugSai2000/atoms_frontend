@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Container, Flex, Grid, Group, Paper, ScrollArea, Title } from '@mantine/core'
+import { Box, Container, Flex, Grid, Group, Paper, ScrollArea, SimpleGrid, Title } from '@mantine/core'
 import SelectDropdown from '../components/selectDropdown/SelectDropdown'
 import ButtonComponent from '../components/button/ButtonComponent'
 import { DatePickerInput } from '@mantine/dates'
@@ -301,55 +301,32 @@ const ReportPage = () =>
 
             {/* Select Dropdown options */}
             <Box mt={20} p={'1rem'} pt={0}>
-
-                <Grid gutter={30} columns={18}>
-
-                    <Grid.Col span={3}>
-
-                        <SelectDropdown label='Plant' placeholder='Select' data={plantArr} selectedOption={plantSelectedOption} onChange={onhandleChange} />
-
-                    </Grid.Col>
-
-                    <Grid.Col span={3}>
-
-                        <SelectDropdown label='Model' placeholder='Select' data={plantSelectedOption === null ? modelArr : arr} selectedOption={modelSelectedOption} onChange={onhandleChange1} />
-
-                    </Grid.Col>
-
-
-                    <Grid.Col span={3}>
-
-                        <SelectDropdown label='Machine' placeholder='Select' data={modelSelectedOption === null ? machineArr : arr1} selectedOption={machineSelectedOption} onChange={onhandleChange2} />
-
-                    </Grid.Col>
-                    <Grid.Col span={3}>
-
-                        <SelectDropdown label='Report Type' placeholder='Select' data={machineSelectedOption === null ? reportTypeArr : filterReportArr} selectedOption={reportSelectedOption} onChange={onhandleChange3} />
-
-                    </Grid.Col>
-
-                    <Grid.Col span={3}>
-                        <DatePickerInput
-
-                            icon={<BiCalendarAlt size='1.3rem' color='var(--color-icon)' />}
-                            label='Date'
-                            type='range'
-                            labelSeparator=' to '
-                            valueFormat='YYYY-MM-DD'
-                            value={date}
-                            onChange={(value) => setDate(value)}
-                            w={250}
-                        />
-                    </Grid.Col>
-
-                    <Grid.Col span={2} ml={50}>
-
-                        <ButtonComponent mt={25} w={150} onClick={onClickReport} />
-
-                    </Grid.Col>
-
-                </Grid>
-
+                <SimpleGrid cols={6} spacing={'2rem'}>
+                    <SelectDropdown label='Plant' placeholder='Select' data={plantArr} selectedOption={plantSelectedOption} onChange={onhandleChange} />
+                    <SelectDropdown label='Model' placeholder='Select' data={plantSelectedOption === null ? modelArr : arr} selectedOption={modelSelectedOption} onChange={onhandleChange1} />
+                    <SelectDropdown label='Machine' placeholder='Select' data={modelSelectedOption === null ? machineArr : arr1} selectedOption={machineSelectedOption} onChange={onhandleChange2} />
+                    <SelectDropdown label='Report Type' placeholder='Select' data={machineSelectedOption === null ? reportTypeArr : filterReportArr} selectedOption={reportSelectedOption} onChange={onhandleChange3} />
+                    <DatePickerInput
+                        styles={{
+                            calendar: {
+                                width: '220px',
+                            },
+                            day: {
+                                width: '30px'
+                            }
+                        }}
+                        icon={<BiCalendarAlt size='1.3rem' color='var(--color-icon)' />}
+                        label='Date'
+                        type='range'
+                        labelSeparator=' to '
+                        valueFormat='YYYY-MM-DD'
+                        value={date}
+                        onChange={(value) => setDate(value)}
+                        w={240}
+                    // mr={'2rem'}
+                    />
+                    <ButtonComponent mt={25} ml={'2rem'} onClick={onClickReport} />
+                </SimpleGrid>
             </Box>
 
             {/* Reports Table & Graph */}

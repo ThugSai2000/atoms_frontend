@@ -4,10 +4,10 @@ import { Button } from '@mantine/core'
 
 const ButtonComponent = (props) =>
 {
-  const { mt, w, onClick, disabled, loading } = props
+  const { mt, ml, w, onClick, disabled, loading } = props
   return (
     <div>
-      <Button mt={mt} w={w} color='var(--color-onclick)' disabled={disabled} onClick={onClick} loading={loading}>
+      <Button mt={mt} w={w} ml={ml} color='var(--color-onclick)' disabled={disabled} onClick={onClick} loading={loading}>
         Search
       </Button>
     </div>

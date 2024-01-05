@@ -5,7 +5,6 @@ import Notifications from './Notifications';
 import Logout from './Logout';
 import AtomsLogo from "./../../assets/AtomsLogo.png"
 
-
 // import './CSS/navbarTop.css';
 
 const NarBarTopComponent = () =>
@@ -14,13 +13,13 @@ const NarBarTopComponent = () =>
   return (
     <Container size="lg">
 
-      <div style={{ padding: '0.5rem' }}>
+      <div style={{ padding: '0.5rem', display: 'flex', alignItems: 'center' }}>
         <div id="navCompanyLogo" >
           <Group position='left'>
             <Image
               width={'5.5rem'}
-
               ml={56}
+              mt={8}
               src={window.localStorage.logourl}
               alt="Atoms Logo"
             />

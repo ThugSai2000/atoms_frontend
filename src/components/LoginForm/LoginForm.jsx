@@ -54,14 +54,15 @@ const LoginForm = () =>
                     window.localStorage.setItem("Authorization", response.data.generated_token)
                     window.localStorage.setItem("username", response.data.username)
                     window.localStorage.setItem("logourl", response.data.logo_url)
-                    navigate('/home/dashboard')
+                    navigate('/app/dashboard')
 
 
                     // console.log("user : " + response.data.username)
 
                 } else if (response)
                 {
-
+                    setLoader(false)
+                    setError("Enter correct password or username ")
                 }
                 else
                 {

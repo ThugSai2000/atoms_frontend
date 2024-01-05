@@ -11,9 +11,7 @@ import ReportPage from './pages/ReportPage';
 import MachinePage from './pages/MachinePage';
 import TrailPage from './pages/TrailPage';
 import DashBoardPage from './pages/DashBoardPage';
-import SettingsPage from './pages/SettingsPage';
 import Home from './components/home/Home';
-import NoDataAvailable from './components/noDataAvailable/NoDataAvailable';
 import PageNotFound404 from './pages/PageNotFound404';
 
 
@@ -37,7 +35,7 @@ function App() {
                 <Route />
               </Route>
               {/* <Route exact path='/login' element={ window.localStorage.getItem('username') !== null ? <Navigate to={'/dashboard'}/> : <LoginForm/>}/> */}
-              <Route exact path='/home' element={<PrivateRoutes/>}>
+              <Route exact path='/app' element={<PrivateRoutes/>}>
                   <Route exact path='dashboard'  element={ <DashBoardPage /> } />
                   <Route exact path='machine' element={ <MachinePage /> }/> 
                   <Route exact path='trail' element={  <TrailPage /> } />
