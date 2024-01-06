@@ -13,9 +13,10 @@ const Logout = () =>
     const handleLogout = () =>
     {
         client.get('/logout', {
-            headers: {
-                Authorization: window.localStorage.getItem('Authorization')
-            }
+            withCredentials: true,
+            // headers: {
+            //     Authorization: window.localStorage.getItem('Authorization')
+            // }
         }).then((response) =>
         {
             if (response.data.status === "Logged_out")

@@ -8,7 +8,7 @@ const PrivateRoutes = () =>
 {
 
 
-  const z = localStorage.getItem("Authorization")
+  const z = localStorage.getItem("username")
   // console.log("private route : " + z)
 
   let auth = { "token": z !== null || undefined ? true : false }
