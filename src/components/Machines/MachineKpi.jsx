@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { machineDropdownAtom } from '../../API/API';
 import { user } from '../../Store/store';
+import LineChartComponent from '../charts/LineChartComponent';
 
 
 
@@ -140,7 +141,7 @@ const MachineKpi = () =>
                     })}
 
                 </Card>
-
+                {/* <LineChartComponent /> */}
             </Card>
 
 

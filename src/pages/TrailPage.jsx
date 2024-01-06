@@ -85,9 +85,10 @@ const TrailPage = () =>
     {
 
         client.get("/Trail_List/", {
-            headers: {
-                Authorization: window.localStorage.getItem("Authorization")
-            }
+            withCredentials: true,
+            // headers: {
+            //     Authorization: window.localStorage.getItem("Authorization")
+            // }
         }).then((resp) =>
         {
 
@@ -106,9 +107,11 @@ const TrailPage = () =>
                 machine_id: selectedMachineOption,
                 date: formattedDateString
                 // "2023-11-04"
-            }, headers: {
-                Authorization: window.localStorage.getItem("Authorization")
-            }
+            }, withCredentials: true,
+
+            // headers: {
+            //     Authorization: window.localStorage.getItem("Authorization")
+            // }
         }).then((resp) =>
         {
             setTrailsData(resp.data.Trail_Details)

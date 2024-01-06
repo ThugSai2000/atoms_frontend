@@ -41,22 +41,25 @@ const MachinePage = () =>
 
     useEffect(() =>
     {
-        client.get('/machine_list/', {
-            headers: {
-                Authorization: window.localStorage.getItem("Authorization")
-            }
-        }).then(async (res) =>
-        {
+        client.get('/machine_list/',
 
-            const filteredData = res.data.machine_list.map(machine => ({
-                label: machine.machine_id,
-                value: machine.machine_id,
-            }));
+            {
+                withCredentials: true,
+                // headers: {
+                //     Authorization: window.localStorage.getItem("Authorization")
+                // }
+            }).then(async (res) =>
+            {
 
-            setData(filteredData);
-        }).catch((error) => (
-            console.log("error", error)
-        ));
+                const filteredData = res.data.machine_list.map(machine => ({
+                    label: machine.machine_id,
+                    value: machine.machine_id,
+                }));
+
+                setData(filteredData);
+            }).catch((error) => (
+                console.log("error", error)
+            ));
 
     }, []);
 
@@ -67,13 +70,14 @@ const MachinePage = () =>
         const interval = setInterval(() =>
         {
             client.get('/machine_details/', {
+                withCredentials: true,
                 params: {
                     machine_id: value,
                     module: "iostatus"
                 },
-                headers: {
-                    Authorization: window.localStorage.getItem("Authorization")
-                },
+                // headers: {
+                //     Authorization: window.localStorage.getItem("Authorization")
+                // },
 
 
             }).then(async (response) =>

@@ -45,9 +45,10 @@ const ReportPage = () =>
     useEffect(() =>
     {
         client.get('/Report_List/', {
-            headers: {
-                Authorization: window.localStorage.getItem('Authorization')
-            }
+            withCredentials: true,
+            // headers: {
+            //     Authorization: window.localStorage.getItem('Authorization')
+            // }
         }).then((response) =>
         {
             const resp = response.data.report
@@ -193,9 +194,10 @@ const ReportPage = () =>
 
 
         client.post('/Reports/', request, {
-            headers: {
-                Authorization: window.localStorage.getItem('Authorization')
-            }
+            withCredentials: true,
+            // headers: {
+            //     Authorization: window.localStorage.getItem('Authorization')
+            // }
         }).then((resp) =>
         {
 

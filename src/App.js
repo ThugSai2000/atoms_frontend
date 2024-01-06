@@ -30,7 +30,7 @@ function App() {
             <Routes>
               <Route exact path='/about' element={<Home/>} />
 
-              <Route exact path='/' element={ window.localStorage.getItem('username') !== null ? <Navigate to={'/home/dashboard'}/> : <LoginForm/>} >
+              <Route exact path='/' element={ window.localStorage.getItem('username') !== null ? <Navigate to={'/app/dashboard'}/> : <LoginForm/>} >
                   <Route exact path='/login'/>
                 <Route />
               </Route>
